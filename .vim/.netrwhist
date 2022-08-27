@@ -1,0 +1,6 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =4
+let g:netrw_dirhist_4='/home/nrdybhu1/Programming/nrdybhu1/kake'
+let g:netrw_dirhist_3='/home/nrdybhu1/Programming/nrdybhu1/kake/client'
+let g:netrw_dirhist_2='/home/nrdybhu1/Programming/nrdybhu1/hyun/app/build'
+let g:netrw_dirhist_1='/home/nrdybhu1/.config/xfce4/xfwm4'

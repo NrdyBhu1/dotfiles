@@ -1,0 +1,59 @@
+{
+  "layer": "top",
+  "modules-left": [ "sway/workspaces", "sway/mode" ],
+  "modules-center": [ ],
+  "modules-right": [ "pulseaudio", "custom/empty", "clock", "custom/empty", "tray", "custom/empty" ],
+  "sway/window": {
+    "max-length": 50,
+    "tooltip": false
+  },
+  "sway/workspaces": {
+    "persistant_workspaces": {
+      "1": [],
+      "2": [],
+      "3": [],
+      "4": [],
+      "5": []
+    },
+    "format": "{name}",
+    "format-icons": {
+      "1": "龎",
+      "2": "磊",
+      "3": "",
+      "4": "",
+      "5": ""
+    },
+    "tooltip": false
+  },
+  "custom/empty": {
+    "format": " ",
+    "tooltip": false
+  },
+  "tray": {
+		"icon-size": 15,
+		"spacing": 5,
+    "tooltip": false
+  },
+  "pulseaudio": {
+    "format": "{icon} {volume}%",
+    "format-bluetooth": "{icon} {volume}%",
+    "format-muted": "婢 Muted",
+    "format-icons": {
+        "headphone": "",
+        "hands-free": "",
+        "headset": "",
+        "phone": "",
+        "portable": "",
+        "car": "",
+        "default": ["","墳"]
+    },
+    "tooltip": false,
+    "scroll-step": 5,
+    "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle"
+  },
+	"clock": {
+		"format": "  {:%d %B %Y - %I:%M %p}",
+		"interval": 60,
+		"tooltip-format": "{:%A, %d %B %Y}\n<tt>{calendar}</tt>"
+	}
+}
