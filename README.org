@@ -1,0 +1,6 @@
+#+title: 	README
+#+author: 	NrdyBhu1
+#+date: 	2022-08-27
+
+* dotfiles
+My personal /dotfiles/ configuration
