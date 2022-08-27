@@ -13,13 +13,14 @@
 pre { white-space: pre-wrap; font-family: monospace; color: #b2b2b2; background-color: #262626; }
 body { font-family: monospace; color: #b2b2b2; background-color: #262626; }
 * { font-size: 1em; }
-.Special { color: #ffd7d7; }
-.String { color: #00af00; }
+.Normal { color: #b2b2b2; background-color: #262626; padding-bottom: 1px; }
 .Operator { color: #d700af; }
 .LineNr { color: #ffff00; }
 .Function { color: #0000c0; }
 .Identifier { color: #c000c0; font-weight: bold; }
+.String { color: #00af00; }
 .Statement { color: #ffff5f; }
+.Special { color: #ffd7d7; }
 .PreProc { color: #5fd7ff; }
 -->
 </style>
@@ -55,15 +56,17 @@ if ('onhashchange' in window) {
 </head>
 <body onload='JumpToLine();'>
 <pre id='vimCodeElement'>
-<span id="L1" class="LineNr">1 </span><span class="Statement">set</span> <span class="PreProc">runtimepath</span>^=~/.vim <span class="PreProc">runtimepath</span>+=~/.vim/after
-<span id="L2" class="LineNr">2 </span><span class="Statement">let</span> <span class="Identifier">&amp;packpath</span> <span class="Operator">=</span> &amp;runtimepath
-<span id="L3" class="LineNr">3 </span><span class="Statement">source</span> ~/<span class="Operator">.</span>vimrc
-<span id="L4" class="LineNr">4 </span>
-<span id="L5" class="LineNr">5 </span><span class="Statement">colorscheme</span> anaris
-<span id="L6" class="LineNr">6 </span><span class="Statement">if</span> <span class="Function">has</span><span class="Special">(</span><span class="String">'gui'</span><span class="Special">)</span>
-<span id="L7" class="LineNr">7 </span>    <span class="Statement">set</span> <span class="PreProc">background</span>=light
-<span id="L8" class="LineNr">8 </span>    <span class="Statement">set</span> <span class="PreProc">guifont</span>=JetBrainsMono\ Nerd\ Font<span class="Statement">:</span>h12
-<span id="L9" class="LineNr">9 </span><span class="Statement">endif</span>
+<span id="L1" class="LineNr"> 1 </span><span class="Statement">set</span> <span class="PreProc">runtimepath</span>^=~/.vim <span class="PreProc">runtimepath</span>+=~/.nvim/
+<span id="L2" class="LineNr"> 2 </span><span class="Statement">let</span> <span class="Identifier">&amp;packpath</span> <span class="Operator">=</span> &amp;runtimepath
+<span id="L3" class="LineNr"> 3 </span>
+<span id="L4" class="LineNr"> 4 </span><span class="Statement">source</span> ~/<span class="Operator">.</span>vimrc
+<span id="L5" class="LineNr"> 5 </span><span class="Statement">lua</span> <span class="Normal">require</span><span class="Special">(</span><span class="String">'plugins'</span><span class="Special">)</span>
+<span id="L6" class="LineNr"> 6 </span>
+<span id="L7" class="LineNr"> 7 </span><span class="Statement">colorscheme</span> anaris
+<span id="L8" class="LineNr"> 8 </span><span class="Statement">if</span> <span class="Function">has</span><span class="Special">(</span><span class="String">'gui'</span><span class="Special">)</span>
+<span id="L9" class="LineNr"> 9 </span>    <span class="Statement">set</span> <span class="PreProc">background</span>=light
+<span id="L10" class="LineNr">10 </span>    <span class="Statement">set</span> <span class="PreProc">guifont</span>=JetBrainsMono\ Nerd\ Font<span class="Statement">:</span>h12
+<span id="L11" class="LineNr">11 </span><span class="Statement">endif</span>
 </pre>
 </body>
 </html>

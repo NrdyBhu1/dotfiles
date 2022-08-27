@@ -1,6 +1,8 @@
-set runtimepath^=~/.vim runtimepath+=~/.vim/after
+set runtimepath^=~/.vim runtimepath+=~/.nvim/
 let &packpath = &runtimepath
+
 source ~/.vimrc
+lua require('plugins')
 
 colorscheme anaris
 if has('gui')

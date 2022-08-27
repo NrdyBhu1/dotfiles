@@ -42,12 +42,12 @@ hi StatusLineModeInverse ctermfg=26 ctermbg=0 guifg=#005fd7 guibg=#000000
 
 function SetStatusLineColor()
 	let c_mode = mode()
-	if c_mode == "i"
-		hi StatusLineMode ctermfg=0 ctermbg=46 guifg=#000000 guibg=#00ff00
-		hi StatusLineModeInverse ctermfg=46 ctermbg=0 guifg=#00ff00 guibg=#000000
-	elseif c_mode == "c"
+	if c_mode == "c"
 		hi StatusLineMode ctermfg=0 ctermbg=226 guifg=#000000 guibg=#00ff00
 		hi StatusLineModeInverse ctermfg=226 ctermbg=0 guifg=#00ff00 guibg=#000000
+	elseif c_mode == "i"
+		hi StatusLineMode ctermfg=0 ctermbg=46 guifg=#000000 guibg=#00ff00
+		hi StatusLineModeInverse ctermfg=46 ctermbg=0 guifg=#00ff00 guibg=#000000
 	else
 		hi StatusLineMode ctermfg=0 ctermbg=26 guifg=#000000 guibg=#005fd7
 		hi StatusLineModeInverse ctermfg=26 ctermbg=0 guifg=#005fd7 guibg=#000000
