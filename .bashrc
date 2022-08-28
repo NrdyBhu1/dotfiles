@@ -59,4 +59,4 @@ export WASMER_DIR="/home/nrdybhu1/.wasmer"
 
 source /nix/store/04yzk79045lsz22yfkwpd1bc05hvg1pb-autojump-22.5.3/share/autojump/autojump.bash
 
-alias config='/usr/bin/env git --git-dir=/home/nrdybhu1/.cfg/ --work-tree=/home/nrdybhu1'
+alias dots='/usr/bin/env git --git-dir=/home/nrdybhu1/.cfg/ --work-tree=/home/nrdybhu1'
