@@ -3,6 +3,7 @@ let &packpath = &runtimepath
 
 source ~/.vimrc
 lua require('plugins')
+lua require 'nvim-treesitter.install'.compilers = { 'clang++'}
 
 colorscheme anaris
 if has('gui')
