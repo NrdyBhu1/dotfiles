@@ -19,7 +19,7 @@ nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
 nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
 nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
 
-colorscheme anaris
+colorscheme onedark
 if has('gui')
 	set background=light
 	set guifont=JetBrainsMono\ Nerd\ Font:h12

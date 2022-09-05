@@ -7,21 +7,22 @@
 <meta name="plugin-version" content="vim8.1_v2">
 <meta name="syntax" content="vim">
 <meta name="settings" content="number_lines,use_css,pre_wrap,no_foldcolumn,expand_tabs,line_ids,prevent_copy=,use_input_for_pc=fallback">
-<meta name="colorscheme" content="anaris">
+<meta name="colorscheme" content="onedark">
 <style>
 <!--
-pre { white-space: pre-wrap; font-family: monospace; color: #b2b2b2; background-color: #262626; }
-body { font-family: monospace; color: #b2b2b2; background-color: #262626; }
+pre { white-space: pre-wrap; font-family: monospace; color: #afafaf; background-color: #262626; }
+body { font-family: monospace; color: #afafaf; background-color: #262626; }
 * { font-size: 1em; }
-.Normal { color: #b2b2b2; background-color: #262626; padding-bottom: 1px; }
-.Operator { color: #d700af; }
-.LineNr { color: #ffff00; }
-.Function { color: #0000c0; }
-.Identifier { color: #c000c0; font-weight: bold; }
-.String { color: #00af00; }
-.Statement { color: #ffff5f; }
-.Special { color: #ffd7d7; }
-.PreProc { color: #5fd7ff; }
+.Normal { color: #afafaf; background-color: #262626; padding-bottom: 1px; }
+.Statement { color: #d75fd7; }
+.String { color: #87d787; }
+.Operator { color: #d75fd7; }
+.PreProc { color: #d7af87; }
+.Function { color: #00afff; }
+.Identifier { color: #ff5f87; }
+.LineNr { color: #444444; }
+.Special { color: #00afff; }
+.Comment { color: #5f5f5f; }
 -->
 </style>
 
@@ -60,13 +61,28 @@ if ('onhashchange' in window) {
 <span id="L2" class="LineNr"> 2 </span><span class="Statement">let</span> <span class="Identifier">&amp;packpath</span> <span class="Operator">=</span> &amp;runtimepath
 <span id="L3" class="LineNr"> 3 </span>
 <span id="L4" class="LineNr"> 4 </span><span class="Statement">source</span> ~/<span class="Operator">.</span>vimrc
-<span id="L5" class="LineNr"> 5 </span><span class="Statement">lua</span> <span class="Normal">require</span><span class="Special">(</span><span class="String">'plugins'</span><span class="Special">)</span>
-<span id="L6" class="LineNr"> 6 </span>
-<span id="L7" class="LineNr"> 7 </span><span class="Statement">colorscheme</span> anaris
-<span id="L8" class="LineNr"> 8 </span><span class="Statement">if</span> <span class="Function">has</span><span class="Special">(</span><span class="String">'gui'</span><span class="Special">)</span>
-<span id="L9" class="LineNr"> 9 </span>    <span class="Statement">set</span> <span class="PreProc">background</span>=light
-<span id="L10" class="LineNr">10 </span>    <span class="Statement">set</span> <span class="PreProc">guifont</span>=JetBrainsMono\ Nerd\ Font<span class="Statement">:</span>h12
-<span id="L11" class="LineNr">11 </span><span class="Statement">endif</span>
+<span id="L5" class="LineNr"> 5 </span><span class="Statement">lua</span> <span class="Normal">require</span>(<span class="String">'plugins'</span>)
+<span id="L6" class="LineNr"> 6 </span><span class="Statement">lua</span> require <span class="String">'nvim-treesitter.install'</span><span class="Operator">.</span>compilers <span class="Operator">=</span> { <span class="String">'clang++'</span>}
+<span id="L7" class="LineNr"> 7 </span><span class="Statement">lua</span> <span class="Normal">require</span>(<span class="String">'lsp'</span>)
+<span id="L8" class="LineNr"> 8 </span><span class="Statement">lua</span> <span class="Normal">require</span>(<span class="String">'bubbles'</span>)
+<span id="L9" class="LineNr"> 9 </span>
+<span id="L10" class="LineNr">10 </span><span class="Comment">&quot; Find files using Telescope command-line sugar.</span>
+<span id="L11" class="LineNr">11 </span><span class="Statement">nnoremap</span> &lt;<span class="Special">leader</span>&gt;ff &lt;<span class="Special">cmd</span>&gt;Telescope find_files&lt;<span class="Special">cr</span>&gt;
+<span id="L12" class="LineNr">12 </span><span class="Statement">nnoremap</span> &lt;<span class="Special">leader</span>&gt;fg &lt;<span class="Special">cmd</span>&gt;Telescope live_grep&lt;<span class="Special">cr</span>&gt;
+<span id="L13" class="LineNr">13 </span><span class="Statement">nnoremap</span> &lt;<span class="Special">leader</span>&gt;fb &lt;<span class="Special">cmd</span>&gt;Telescope buffers&lt;<span class="Special">cr</span>&gt;
+<span id="L14" class="LineNr">14 </span><span class="Statement">nnoremap</span> &lt;<span class="Special">leader</span>&gt;fh &lt;<span class="Special">cmd</span>&gt;Telescope help_tags&lt;<span class="Special">cr</span>&gt;
+<span id="L15" class="LineNr">15 </span>
+<span id="L16" class="LineNr">16 </span><span class="Comment">&quot; Using Lua functions</span>
+<span id="L17" class="LineNr">17 </span><span class="Statement">nnoremap</span> &lt;<span class="Special">leader</span>&gt;ff &lt;<span class="Special">cmd</span>&gt;lua require('telescope.builtin').find_files()&lt;<span class="Special">cr</span>&gt;
+<span id="L18" class="LineNr">18 </span><span class="Statement">nnoremap</span> &lt;<span class="Special">leader</span>&gt;fg &lt;<span class="Special">cmd</span>&gt;lua require('telescope.builtin').live_grep()&lt;<span class="Special">cr</span>&gt;
+<span id="L19" class="LineNr">19 </span><span class="Statement">nnoremap</span> &lt;<span class="Special">leader</span>&gt;fb &lt;<span class="Special">cmd</span>&gt;lua require('telescope.builtin').buffers()&lt;<span class="Special">cr</span>&gt;
+<span id="L20" class="LineNr">20 </span><span class="Statement">nnoremap</span> &lt;<span class="Special">leader</span>&gt;fh &lt;<span class="Special">cmd</span>&gt;lua require('telescope.builtin').help_tags()&lt;<span class="Special">cr</span>&gt;
+<span id="L21" class="LineNr">21 </span>
+<span id="L22" class="LineNr">22 </span><span class="Statement">colorscheme</span> onedark
+<span id="L23" class="LineNr">23 </span><span class="Statement">if</span> <span class="Function">has</span>(<span class="String">'gui'</span>)
+<span id="L24" class="LineNr">24 </span>    <span class="Statement">set</span> <span class="PreProc">background</span>=light
+<span id="L25" class="LineNr">25 </span>    <span class="Statement">set</span> <span class="PreProc">guifont</span>=JetBrainsMono\ Nerd\ Font<span class="Statement">:</span>h12
+<span id="L26" class="LineNr">26 </span><span class="Statement">endif</span>
 </pre>
 </body>
 </html>
