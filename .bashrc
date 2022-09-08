@@ -54,8 +54,6 @@ alias cat='cat -n'
 command -v funky &>/dev/null && eval "$(funky --init bash)"
 
 # Wasmer
-export WASMER_DIR="/home/nrdybhu1/.wasmer"
-[ -s "$WASMER_DIR/wasmer.sh" ] && source "$WASMER_DIR/wasmer.sh"
 
 source /nix/store/04yzk79045lsz22yfkwpd1bc05hvg1pb-autojump-22.5.3/share/autojump/autojump.bash
 
