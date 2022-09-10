@@ -12,6 +12,8 @@ set ts=4 sw=4
 set mouse=a
 set nu
 set nowrap
+set autoindent
+syntax enable
 
 " if has('nvim')
 " 	colorscheme railscasts

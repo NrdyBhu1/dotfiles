@@ -265,6 +265,10 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
+mode "noting" {
+	bindsym $mod+t mode "default"
+}
+bindsym $mod+t mode "noting"
 
 #
 #
