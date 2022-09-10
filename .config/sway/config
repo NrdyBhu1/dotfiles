@@ -45,7 +45,7 @@ font Iosevka Nerd Font 12
 # Default wallpaper (more resolutions are available in /run/current-system/sw/share/backgrounds/sway/)
 # output * bg /run/current-system/sw/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 # output * bg $HOME/wallpapers/lich.jpg fill
-output * bg $HOME/wallpapers/Anger.png fill
+output * bg $HOME/wallpapers/1253503.png fill
 #
 # Example configuration:
 #
@@ -58,12 +58,13 @@ output * bg $HOME/wallpapers/Anger.png fill
 # Example configuration:
 #
  exec swayidle -w \
-          timeout 600 'swaylock -i $HOME/wallpapers/art.jpg -f -c 000000' \
+          timeout 600 'swaylock -i $HOME/wallpapers/1244257.png -f -c 000000' \
           timeout 900 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
-          before-sleep 'swaylock -i $HOME/wallpapers/art.jpg -f -c 000000'
+          before-sleep 'swaylock -i $HOME/wallpapers/1244257.png -f -c 000000'
+
+bindsym $mod+m exec swaylock -i $HOME/wallpapers/1244257.png -f -c 000000
 
 exec brave
-exec google-chrome-stable
 #
 # This will lock your screen after 600 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
@@ -278,20 +279,21 @@ bindsym $mod+c exec $HOME/.config/sway/color-picker.sh
 # Status Bar:
 #
 # Read `man 5 sway-bar` for more information about this section.
-bar {
-   position top
+# bar {
+#    position top
+# 
+#    # When the status_command prints a new line to stdout, swaybar updates.
+#    # The default just shows the current date and time.
+#    # status_command while date +'%Y-%m-%d %I:%M:%S %p'; do sleep 1; done
+#    status_command i3blocks -c $HOME/.config/i3blocks/i3blocks.conf
+# 
+#    colors {
+#        statusline #ffffff
+#        background #323232
+#        inactive_workspace #32323200 #32323200 #5c5c5c
+#    }
+# }
 
-   # When the status_command prints a new line to stdout, swaybar updates.
-   # The default just shows the current date and time.
-   # status_command while date +'%Y-%m-%d %I:%M:%S %p'; do sleep 1; done
-   status_command i3blocks -c $HOME/.config/i3blocks/i3blocks.conf
-
-   colors {
-       statusline #ffffff
-       background #323232
-       inactive_workspace #32323200 #32323200 #5c5c5c
-   }
-}
 
 # include /etc/sway/config.d/*
 # exec $HOME/.config/waybar/launch.sh

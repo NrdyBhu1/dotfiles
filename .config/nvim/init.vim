@@ -5,7 +5,7 @@ source ~/.vimrc
 lua require('plugins')
 lua require 'nvim-treesitter.install'.compilers = { 'clang++'}
 lua require('lsp')
-lua require('bubbles')
+lua require('evil')
 
 " Find files using Telescope command-line sugar.
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
