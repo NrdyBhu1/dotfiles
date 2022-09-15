@@ -8,7 +8,7 @@
 #
 # Logo key. Use Mod1 for Alt.
 # Use Mod4 for windows.
-set $mod Mod4
+set $mod Mod1
 # Home row direction keys, like vim
 set $left h
 set $down j
@@ -36,7 +36,8 @@ seat seat0 xcursor_theme Adwaita 24
 #
 #
 #
-font Iosevka Nerd Font 12
+# font Iosevka Nerd Font 12
+font monospace 12
 #
 #
 
@@ -119,7 +120,7 @@ exec brave
 
     #
     # sticky enable
-    bindsym $mod+x sticky enable
+    bindsym $mod+x sticky toggle
     #
 
     # Reload the configuration file
@@ -146,7 +147,7 @@ bindsym Ctrl+Shift+Print exec "$HOME/bin/wayshot -s \'$(slurp -f '%x %y %w %h')\
 #
 #
 # Gaps
-# default_border none
+default_border none
 # gaps inner 20
 #
 #
