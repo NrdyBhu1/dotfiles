@@ -3,4 +3,5 @@
 #+date: 	2022-08-27
 
 * dotfiles
+[[./dotfiles.png]]
 My personal /dotfiles/ configuration
