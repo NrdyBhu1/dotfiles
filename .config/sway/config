@@ -28,7 +28,7 @@ set $menu bemenu-run --fn "JetBrainsMono Nerd Font 12" --tf "#777777" --hf "#ddd
 #
 #
 #
-seat seat0 xcursor_theme Adwaita 24
+seat seat0 xcursor_theme "Capitaine Cursors" 24
 #
 #
 #
@@ -46,7 +46,7 @@ font JetBrainsMono Nerd Font 12
 # Default wallpaper (more resolutions are available in /run/current-system/sw/share/backgrounds/sway/)
 # output * bg /run/current-system/sw/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 # output * bg $HOME/wallpapers/lich.jpg fill
-output * bg $HOME/wallpapers/1253503.png fill
+output * bg $HOME/wallpapers/937851.png fill
 #
 # Example configuration:
 #
@@ -281,6 +281,8 @@ bindsym $mod+c exec $HOME/.config/sway/color-picker.sh
 #
 # class                 border  backgr. text    indicator child_border
 #
+client.focused	#D8BEC1 #D8BEC1 #141017
+client.unfocused #E9A691 #E9A691 #141017
 # Status Bar:
 #
 # Read `man 5 sway-bar` for more information about this section.
@@ -293,9 +295,12 @@ bar {
    status_command i3blocks -c $HOME/.config/i3blocks/i3blocks.conf
 
    colors {
-       statusline #ffffff
-       background #323232
-       inactive_workspace #32323200 #32323200 #5c5c5c
+   		focused_workspace #D8BEC1 #D8BEC1 #141017
+   		inactive_workspace #E9A691 #E9A691 #141017
+		background #A89F9F
+       # statusline #ffffff
+       # background #323232
+       # inactive_workspace #32323200 #32323200 #5c5c5c
    }
 }
 

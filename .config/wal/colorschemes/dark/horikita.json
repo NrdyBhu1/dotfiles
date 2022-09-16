@@ -1,0 +1,27 @@
+{
+    "wallpaper": "/home/nrdybhu1/wallpapers/937851.png",
+    "alpha": "100",
+    "special": {
+        "background": "#141017",
+        "foreground": "#f0e4e4",
+        "cursor": "#f0e4e4"
+    },
+    "colors": {
+        "color0": "#141017",
+        "color1": "#616088",
+        "color2": "#A68483",
+        "color3": "#9991A0",
+        "color4": "#E9A691",
+        "color5": "#D8BEC1",
+        "color6": "#E7CDC9",
+        "color7": "#f0e4e4",
+        "color8": "#a89f9f",
+        "color9": "#616088",
+        "color10": "#A68483",
+        "color11": "#9991A0",
+        "color12": "#E9A691",
+        "color13": "#D8BEC1",
+        "color14": "#E7CDC9",
+        "color15": "#f0e4e4"
+    }
+}
