@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+patchelf --set-interpreter $(patchelf --print-interpreter `which cp`) $@

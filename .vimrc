@@ -20,3 +20,6 @@ colorscheme noctu
 " 	colorscheme railscasts
 " endif
 " vim ft=vim
+
+nmap <C-n> :Texplore<CR>
+vmap <C-n> :Texplore<CR>

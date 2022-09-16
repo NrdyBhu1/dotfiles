@@ -1,11 +1,12 @@
 # export PS1='<\[\033[0;32m\]\u@\h\[\033[0m\]:\w>$ '
 # export PS1='<\[\]\u@\h\[\]:\w>$ '
-export PS1=' \[\033[0;34m\]\[\033[0;0m\] '
+export PS1=' \[\033[0;34m\]`pwd` \[\033[0;0m\] '
 export ANDROID_SDK=$HOME/android-sdk
 export ANDROID_SDK_HOME=$HOME/android-sdk
 export ANDROID_HOME=$HOME/android-sdk
 export WABT_PATH=$HOME/Programming/thirdparty/wabt
 export PATH=$HOME/bin:$HOME/.npm-global/bin:$HOME/.cargo/bin/:$HOME/.local/bin:$HOME/go/bin:$HOME/android-sdk/cmdline-tools/bin:$PATH
+export BEMENU_BACKEND=curses
 alias sdkmanager='sdkmanager --sdk_root=$ANDROID_HOME'
 function gi() { curl -sL https://www.toptal.com/developers/gitignore/api/$@ ;}
 
@@ -53,8 +54,7 @@ alias cat='cat -n'
 # setup funky
 command -v funky &>/dev/null && eval "$(funky --init bash)"
 
-# Wasmer
-
 source /nix/store/04yzk79045lsz22yfkwpd1bc05hvg1pb-autojump-22.5.3/share/autojump/autojump.bash
-
 alias dots='/usr/bin/env git --git-dir=/home/nrdybhu1/.cfg/ --work-tree=/home/nrdybhu1'
+
+nerdfetch

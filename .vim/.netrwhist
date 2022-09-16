@@ -1,5 +1,12 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =3
-let g:netrw_dirhist_3='/home/nrdybhu1/Programming/nrdybhu1/apoxi/src'
-let g:netrw_dirhist_2='/home/nrdybhu1/Programming/nrdybhu1/apoxi'
-let g:netrw_dirhist_1='/home/nrdybhu1/Programming/nrdybhu1/nicc'
+let g:netrw_dirhistcnt =5
+let g:netrw_dirhist_5='/home/nrdybhu1/Programming/nrdybhu1/emato/game/src/main/java/com/nrdybhu/game'
+let g:netrw_dirhist_4='/home/nrdybhu1/Programming/nrdybhu1/emato/game/src/main/java/com/nrdybhu'
+let g:netrw_dirhist_3='/home/nrdybhu1/Programming/nrdybhu1/emato/game/src/main/java/com'
+let g:netrw_dirhist_2='/home/nrdybhu1/Programming/nrdybhu1/emato/game/src/main/java'
+let g:netrw_dirhist_1='/home/nrdybhu1/Programming/nrdybhu1/emato/game/src/main'
+let g:netrw_dirhist_0='/home/nrdybhu1/Programming/nrdybhu1/emato/game/src'
+let g:netrw_dirhist_9='/home/nrdybhu1/Programming/nrdybhu1/emato/game'
+let g:netrw_dirhist_8='/home/nrdybhu1/Programming/nrdybhu1/emato'
+let g:netrw_dirhist_7='/home/nrdybhu1/Programming/nrdybhu1/emato/game/src/main/resources/Interface'
+let g:netrw_dirhist_6='/home/nrdybhu1/Programming/nrdybhu1/emato/game/src/main/resources'
