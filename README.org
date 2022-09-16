@@ -5,3 +5,5 @@
 [[./dotfiles.png]]
 
 *My personal /dotfiles/ configuration*
+[[./rice.png]]
+
