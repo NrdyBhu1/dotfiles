@@ -21,14 +21,14 @@ set $term alacritty
 # on the original workspace that the command was run on.
 # set $menu dmenu_path | dmenu -fn "Iosevka:size=12" | xargs swaymsg exec --
 # set $menu bemenu-run --fn "Iosevka 12"
-set $menu bemenu-run --fn "JetBrainsMono Nerd Font 12" --tf "#777777" --hf "#dddddd" --hb "#000000" --line-height 40 -b
+set $menu bemenu-run --fn "JetBrainsMono Nerd Font 12" --line-height 40
 
 ################
 # cursor
 #
 #
 #
-seat seat0 xcursor_theme "Capitaine Cursors" 24
+# seat seat0 xcursor_theme "Capitaine Cursors" 24
 #
 #
 #
@@ -58,13 +58,12 @@ output * bg $HOME/wallpapers/937851.png fill
 #
 # Example configuration:
 #
- exec swayidle -w \
-          timeout 600 'swaylock -i $HOME/wallpapers/1244257.png -f -c 000000' \
-          timeout 900 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
-          before-sleep 'swaylock -i $HOME/wallpapers/1244257.png -f -c 000000'
+# exec swayidle -w \
+#           timeout 600 '$HOME/.config/sway/lock.sh' \
+#           timeout 900 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
+#           before-sleep '$HOME/.config/sway/lock.sh'
 
-bindsym $mod+m exec swaylock -i $HOME/wallpapers/1244257.png -f -c 000000
-
+bindsym $mod+m exec $HOME/.config/sway/lock.sh
 exec brave
 #
 # This will lock your screen after 600 seconds of inactivity, then turn off

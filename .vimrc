@@ -14,7 +14,7 @@ set nu
 set nowrap
 set autoindent
 syntax enable
-colorscheme noctu
+colorscheme desert
 
 " if has('nvim')
 " 	colorscheme railscasts

@@ -1,1 +1,3 @@
-Xcursor.theme: Adwaita
+Xcursor.theme: Captaine Cursors
+xterm*faceName: JetBrainsMono Nerd Font
+xterm*faceSize: 12
