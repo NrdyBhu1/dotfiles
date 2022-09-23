@@ -1,5 +1,8 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =2
+let g:netrw_dirhistcnt =5
+let g:netrw_dirhist_5='/home/nrdybhu1/Programming/nrdybhu1/hello-world/src'
+let g:netrw_dirhist_4='/home/nrdybhu1/Programming/nrdybhu1/mcw/src'
+let g:netrw_dirhist_3='/home/nrdybhu1/Programming/nrdybhu1/mcw'
 let g:netrw_dirhist_2='/home/nrdybhu1/Programming/nrdybhu1/ichiba/core/src/com/nrdybhu1/ichiba'
 let g:netrw_dirhist_1='/home/nrdybhu1/Programming/nrdybhu1/pog2D/src'
 let g:netrw_dirhist_0='/home/nrdybhu1/Programming/nrdybhu1/pog2D/include'
@@ -7,6 +10,3 @@ let g:netrw_dirhist_9='/home/nrdybhu1/Programming/nrdybhu1/pog2D'
 let g:netrw_dirhist_8='/home/nrdybhu1/Programming/playground/hello'
 let g:netrw_dirhist_7='/home/nrdybhu1/Programming/nrdybhu1/supreme-lamp/src'
 let g:netrw_dirhist_6='/home/nrdybhu1/Programming/nrdybhu1/supreme-lamp'
-let g:netrw_dirhist_5='/home/nrdybhu1/Programming/nrdybhu1/emato/game/src/main/java/com/nrdybhu/game'
-let g:netrw_dirhist_4='/home/nrdybhu1/Programming/nrdybhu1/emato/game/src/main/java/com/nrdybhu'
-let g:netrw_dirhist_3='/home/nrdybhu1/Programming/nrdybhu1/emato/game/src/main/java/com'

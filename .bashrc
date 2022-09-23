@@ -1,5 +1,6 @@
 # export PS1='<\[\033[0;32m\]\u@\h\[\033[0m\]:\w>$ '
 # export PS1='<\[\]\u@\h\[\]:\w>$ '
+export SCREENRC=$HOME/.config/screenrc
 export HISTSIZE=1000
 export HISTCONTROL=ignorespace
 export PS1='\[\033[34;40m\]\[\033[44;30m\] `pwd`  \[\033[34;40m\]\[\033[0;0m\] '
@@ -15,7 +16,13 @@ function gi() { curl -sL https://www.toptal.com/developers/gitignore/api/$@ ;}
 
 function print_prompt() {
 	unset PS1
-	PS1='\[\033[34;40m\]\[\033[44;30m\] `pwd`  '
+	PS1='\[\033[34;40m\]\[\033[44;30m\] '
+	if [ $COLUMNS -le 60 ]; then
+		PS1+="$(basename `pwd`)"
+	else
+		PS1+=`pwd`
+	fi
+	PS1+='  '
 	if [ -d './.git' ]; then
 		local status=`git status -s`
 		status="${status:1:2}"

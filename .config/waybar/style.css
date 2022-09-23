@@ -1,9 +1,10 @@
 * { 
   font-family: "Iosevka Nerd Font";
-  font-size: 10pt;
+  font-size: 10px;
 }
 
 window#waybar {
+  background: transparent;
   border-bottom: 3px solid rgba(100, 114, 125, 0.5);
 }
 
@@ -21,21 +22,20 @@ window#waybar {
 
 #workspaces button {
   font-size: 10px;
-  padding: 5px;
+  /* padding: 5px;
   margin: 5px;
-  border-radius: 25%;
+  border-radius: 25%; */
 }
 
 #workspaces button.focused {
   background: #FF8C00;
-  border-radius: 75%;
 }
 
 #mode {
-  margin: 2px;
+  /* margin: 2px; */
   background-color: #e0af68;
 }
 
-#mode, #clock, #pulseaudio {
+/* #mode, #clock, #pulseaudio {
   padding: 0 10px;
-}
+} */
