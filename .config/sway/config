@@ -21,7 +21,7 @@ set $term alacritty
 # on the original workspace that the command was run on.
 # set $menu dmenu_path | dmenu -fn "Iosevka:size=12" | xargs swaymsg exec --
 # set $menu bemenu-run --fn "Iosevka 12"
-set $menu bemenu-run --fn "JetBrainsMono Nerd Font 12" --line-height 40
+set $menu bemenu-run --fn "JetBrainsMono Nerd Font 12" -l 10 -c -m 30
 
 ################
 # cursor
@@ -38,7 +38,7 @@ seat seat0 xcursor_theme "Adwaita" 24
 #
 #
 # font Iosevka Nerd Font 12
-font JetBrainsMono Nerd Font 12
+font JetBrainsMono Nerd Font 0
 #
 #
 
@@ -148,6 +148,9 @@ bindsym Ctrl+Shift+Print exec "$HOME/bin/wayshot -s \'$(slurp -f '%x %y %w %h')\
 #
 # Gaps
 default_border none
+default_floating_border none
+titlebar_padding 1
+titlebar_border_thickness 0
 # smart border on
 # gaps inner 10
 # gaps outer 5
@@ -288,24 +291,24 @@ client.unfocused #E9A691 #E9A691 #141017
 # Status Bar:
 #
 # Read `man 5 sway-bar` for more information about this section.
-bar {
-   position top
-
-   # When the status_command prints a new line to stdout, swaybar updates.
-   # The default just shows the current date and time.
-   # status_command while date +'%Y-%m-%d %I:%M:%S %p'; do sleep 1; done
-   status_command i3blocks -c $HOME/.config/i3blocks/i3blocks.conf
-
-   colors {
-   		focused_workspace #D8BEC1 #D8BEC1 #141017
-   		inactive_workspace #E9A691 #E9A691 #141017
-		background #A89F9F
-       # statusline #ffffff
-       # background #323232
-       # inactive_workspace #32323200 #32323200 #5c5c5c
-   }
-}
+# bar {
+#    position top
+# 
+#    # When the status_command prints a new line to stdout, swaybar updates.
+#    # The default just shows the current date and time.
+#    # status_command while date +'%Y-%m-%d %I:%M:%S %p'; do sleep 1; done
+#    status_command i3blocks -c $HOME/.config/i3blocks/i3blocks.conf
+# 
+#    colors {
+#    		focused_workspace #D8BEC1 #D8BEC1 #141017
+#    		inactive_workspace #E9A691 #E9A691 #141017
+# 		background #A89F9F
+#        # statusline #ffffff
+#        # background #323232
+#        # inactive_workspace #32323200 #32323200 #5c5c5c
+#    }
+# }
 
 
 # include /etc/sway/config.d/*
-# exec $HOME/.config/waybar/launch.sh
+exec $HOME/.config/waybar/launch.sh

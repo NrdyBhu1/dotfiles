@@ -1,59 +1,110 @@
+// vim:ft=json
+
 {
-  "layer": "top",
-  "modules-left": [ "sway/workspaces", "sway/mode" ],
-  "modules-center": [ ],
-  "modules-right": [ "pulseaudio", "custom/empty", "clock", "custom/empty", "tray", "custom/empty" ],
-  "sway/window": {
-    "max-length": 50,
-    "tooltip": false
-  },
-  "sway/workspaces": {
-    "persistant_workspaces": {
-      "1": [],
-      "2": [],
-      "3": [],
-      "4": [],
-      "5": []
-    },
-    "format": "{name}",
-    "format-icons": {
-      "1": "龎",
-      "2": "磊",
-      "3": "",
-      "4": "",
-      "5": ""
-    },
-    "tooltip": false
-  },
-  "custom/empty": {
-    "format": " ",
-    "tooltip": false
-  },
-  "tray": {
-		"icon-size": 15,
-		"spacing": 5,
-    "tooltip": false
-  },
-  "pulseaudio": {
-    "format": "{icon} {volume}%",
-    "format-bluetooth": "{icon} {volume}%",
-    "format-muted": "婢 Muted",
-    "format-icons": {
-        "headphone": "",
-        "hands-free": "",
-        "headset": "",
-        "phone": "",
-        "portable": "",
-        "car": "",
-        "default": ["","墳"]
-    },
-    "tooltip": false,
-    "scroll-step": 5,
-    "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle"
-  },
+//	"layer": "top",
+//	"position": "top",
+	"height": 27,
+	"modules-left": [
+		"sway/workspaces",
+		"custom/scratch",
+		"sway/mode",
+		"sway/window"
+	],
+	"modules-center": [],
+	"modules-right": [
+		"network",
+		"temperature",
+		"backlight",
+		"pulseaudio",
+		"battery",
+		"clock",
+		"tray"
+	],
+	"sway/workspaces": {
+		"disable-scroll": true,
+		"disable-markup": true,
+		"format": "{index}"
+	},
+	"sway/window": {
+		"format": "{}",
+		"max-length": 150
+	},
+	"custom/scratch": {
+		"interval": 3,
+		"exec": "swaymsg -t get_tree | jq 'recurse(.nodes[]) | first(select(.name==\"__i3_scratch\")) | .floating_nodes | length | select(. >= 0)'",
+		"format": "^{}",
+		"on-click": "swaymsg 'scratchpad show'",
+		"on-click-right": "swaymsg 'move scratchpad'"
+	},
+	"tray": {
+		"icon-size": 18,
+		"spacing": 15
+	},
 	"clock": {
-		"format": "  {:%d %B %Y - %I:%M %p}",
-		"interval": 60,
-		"tooltip-format": "{:%A, %d %B %Y}\n<tt>{calendar}</tt>"
+		"format": "{:%a %b %e  %R}",
+		"interval": 30
+	},
+	"battery": {
+		"bat": "BAT0",
+		"states": {
+			"full": 99,
+			"good": 98,
+			"normal": 98,
+			"warning": 20,
+			"critical": 20
+		},
+		"format": "{icon}   {capacity}%",
+		"format-good": "{icon}   {capacity}%",
+		"format-full": "   {capacity}%",
+		"format-icons": [
+			"",
+			"",
+			"",
+			"",
+			""
+		],
+		"interval": 30
+	},
+	"network": {
+		"interface": "wlp3s0",
+		"format-wifi": "   WiFi-On",
+		"format-disconnected": "睊   Disconnected",
+		"interval": 60
+	},
+	"temperature": {
+		"thermal-zone": 0,
+		"format": "{icon} {temperatureC}°C",
+		"format-icons": [
+			""
+		],
+		"interval": 30
+	},
+	"backlight": {
+		"device": "intel_backlight",
+		"format": "{icon}  {percent}%  ",
+		"format-icons": [
+			"",
+			"",
+			"",
+			""
+		],
+		"interval": 60
+	},
+	"pulseaudio": {
+		"format": "{icon} {volume}%",
+		"format-bluetooth": "{icon} {volume}%",
+		"format-muted": "婢 Muted",
+		"format-icons": {
+			"headphone": "",
+			"hands-free": "",
+			"headset": "",
+			"phone": "",
+			"portable": "",
+			"car": "",
+			"default": ["","墳"]
+		},
+		"tooltip": false,
+		"scroll-step": 5,
+		"on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle"
 	}
 }
