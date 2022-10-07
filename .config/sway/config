@@ -47,7 +47,7 @@ font JetBrainsMono Nerd Font 0
 # Default wallpaper (more resolutions are available in /run/current-system/sw/share/backgrounds/sway/)
 # output * bg /run/current-system/sw/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 # output * bg $HOME/wallpapers/lich.jpg fill
-output * bg $HOME/wallpapers/937851.png fill
+output * bg $HOME/wallpapers/830066.jpg fill
 #
 # Example configuration:
 #
@@ -65,7 +65,6 @@ exec swayidle -w \
           before-sleep '$HOME/.config/sway/lock.sh'
 
 bindsym $mod+m exec $HOME/.config/sway/lock.sh
-exec brave
 #
 # This will lock your screen after 600 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
@@ -312,3 +311,5 @@ client.unfocused #E9A691 #E9A691 #141017
 
 # include /etc/sway/config.d/*
 exec $HOME/.config/waybar/launch.sh
+exec mako
+exec brave

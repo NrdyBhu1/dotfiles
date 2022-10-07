@@ -12,12 +12,12 @@
 	],
 	"modules-center": [],
 	"modules-right": [
-		"network",
-		"temperature",
-		"backlight",
-		"pulseaudio",
-		"battery",
+//		"network",
+//		"temperature",
+//		"backlight",
 		"clock",
+		"pulseaudio",
+//		"battery",
 		"tray"
 	],
 	"sway/workspaces": {

@@ -24,11 +24,12 @@ function print_prompt() {
 	fi
 	PS1+='  '
 	if [ -d './.git' ]; then
-		local status=`git status -s`
-		status="${status:1:2}"
+		# local status=`git status -s`
+		# status="${status:1:2}"
+		local status=`git branch --show-current`
 		PS1+='\[\033[34;42m\]'
 		PS1+='\[\033[30;42m\]'
-		PS1+=" $status"
+		PS1+=" $status "
 		PS1+='\[\033[32;40m\]'
 	else
 		PS1+='\[\033[34;40m\]'

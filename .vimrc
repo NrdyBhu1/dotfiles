@@ -14,12 +14,14 @@ set nu
 set nowrap
 set autoindent
 syntax enable
-colorscheme desert
+colorscheme delek
 
 " if has('nvim')
 " 	colorscheme railscasts
 " endif
 " vim ft=vim
+
+au BufRead *.jinja2 set ft=html
 
 nmap <C-n> :Texplore<CR>
 vmap <C-n> :Texplore<CR>
