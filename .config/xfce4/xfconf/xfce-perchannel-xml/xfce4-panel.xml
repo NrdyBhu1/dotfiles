@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<channel name="xfce4-panel" version="1.0">
+  <property name="configver" type="empty"/>
+  <property name="panels" type="array">
+    <value type="int" value="1"/>
+    <property name="panel-1" type="empty">
+      <property name="position" type="string" value="p=8;x=683;y=751"/>
+      <property name="length" type="uint" value="100"/>
+      <property name="position-locked" type="bool" value="true"/>
+      <property name="size" type="empty"/>
+      <property name="background-style" type="uint" value="0"/>
+      <property name="background-alpha" type="empty"/>
+      <property name="enter-opacity" type="uint" value="100"/>
+      <property name="leave-opacity" type="uint" value="100"/>
+      <property name="plugin-ids" type="array">
+        <value type="int" value="4"/>
+        <value type="int" value="11"/>
+        <value type="int" value="7"/>
+        <value type="int" value="8"/>
+        <value type="int" value="9"/>
+        <value type="int" value="12"/>
+        <value type="int" value="5"/>
+        <value type="int" value="13"/>
+        <value type="int" value="2"/>
+      </property>
+      <property name="mode" type="uint" value="0"/>
+      <property name="disable-struts" type="bool" value="false"/>
+      <property name="icon-size" type="uint" value="0"/>
+      <property name="span-monitors" type="bool" value="false"/>
+    </property>
+    <property name="dark-mode" type="bool" value="true"/>
+  </property>
+  <property name="plugins" type="empty">
+    <property name="plugin-1" type="empty"/>
+    <property name="plugin-2" type="string" value="battery"/>
+    <property name="plugin-3" type="empty">
+      <property name="items" type="empty"/>
+    </property>
+    <property name="plugin-4" type="string" value="applicationsmenu">
+      <property name="items" type="empty"/>
+      <property name="show-button-title" type="bool" value="false"/>
+      <property name="show-generic-names" type="bool" value="false"/>
+      <property name="show-tooltips" type="bool" value="true"/>
+    </property>
+    <property name="plugin-5" type="string" value="xapp-status-plugin">
+      <property name="items" type="empty"/>
+    </property>
+    <property name="plugin-6" type="empty">
+      <property name="show-handle" type="empty"/>
+      <property name="middle-click" type="empty"/>
+    </property>
+    <property name="plugin-7" type="empty">
+      <property name="expand" type="bool" value="true"/>
+      <property name="style" type="uint" value="0"/>
+    </property>
+    <property name="plugin-8" type="empty">
+      <property name="names-visible" type="empty"/>
+      <property name="show-frame" type="empty"/>
+      <property name="known-legacy-items" type="array">
+        <value type="string" value="thunar"/>
+        <value type="string" value="blueman"/>
+        <value type="string" value="mintupdate.py"/>
+        <value type="string" value="networkmanager applet"/>
+        <value type="string" value="tray.py"/>
+      </property>
+      <property name="known-items" type="array">
+        <value type="string" value="obs"/>
+        <value type="string" value="systray"/>
+        <value type="string" value="discord1"/>
+        <value type="string" value="blueman"/>
+      </property>
+    </property>
+    <property name="plugin-9" type="empty"/>
+    <property name="plugin-10" type="empty"/>
+    <property name="plugin-11" type="string" value="tasklist">
+      <property name="show-handle" type="bool" value="false"/>
+      <property name="flat-buttons" type="bool" value="true"/>
+    </property>
+    <property name="plugin-12" type="empty">
+      <property name="enable-keyboard-shortcuts" type="empty"/>
+      <property name="enable-mpris" type="empty"/>
+      <property name="mixer-command" type="empty"/>
+      <property name="show-notifications" type="empty"/>
+      <property name="mpris-players" type="string" value="chromium.instance109406;chromium.instance11970;chromium.instance17253;chromium.instance17442;chromium.instance1978;chromium.instance1979;chromium.instance1982;chromium.instance2015;chromium.instance2035;chromium.instance2037;chromium.instance2039;chromium.instance2043;chromium.instance20903;chromium.instance2138;chromium.instance22682;chromium.instance23365;chromium.instance2551;chromium.instance2621;chromium.instance2711;chromium.instance2838;chromium.instance2840;chromium.instance3214;chromium.instance3287;chromium.instance35303;chromium.instance3674;chromium.instance3693;chromium.instance4479;chromium.instance4542;chromium.instance4774;chromium.instance48015;chromium.instance5921;chromium.instance6502;chromium.instance6612;chromium.instance7100;chromium.instance8402;io.github.celluloid_player.Celluloid.instance-1;spotify"/>
+    </property>
+    <property name="plugin-13" type="empty">
+      <property name="digital-format" type="string" value="%I:%M %p"/>
+      <property name="mode" type="uint" value="2"/>
+      <property name="timezone" type="string" value=""/>
+      <property name="fuzziness" type="uint" value="0"/>
+      <property name="show-military" type="bool" value="false"/>
+      <property name="flash-separators" type="bool" value="false"/>
+      <property name="show-meridiem" type="bool" value="false"/>
+    </property>
+  </property>
+</channel>

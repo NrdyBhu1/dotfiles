@@ -1,0 +1,220 @@
+#+title: Emacs
+#+author: NrdyBhu1
+#+date: 2020-09-13
+#+html_head: <link rel="stylesheet" href="/org.min.css" type="text/css">
+
+* Simple emacs
+** Packages
+#+begin_src emacs-lisp :tangle "yes"
+(require 'package)
+(setq package-archives '(
+    ("ELPA" . "https://tromey.com/elpa/")
+    ("gnu" . "https://elpa.gnu.org/packages/")
+    ("melpa" . "https://melpa.org/packages/")))
+(package-initialize)
+#+end_src
+
+** Custom variables
+#+begin_src emacs-lisp :tangle "yes"
+(custom-set-variables
+
+'(ansi-color-faces-vector
+[default default italic underline success warning error])
+
+'(ansi-color-names-vector
+["black" "red3" "ForestGreen" "yellow3" "blue" "magenta3" "DeepSkyBlue" "gray50"])
+'(custom-safe-themes '("332a945a80a202248b21963da38e842aa35b09d1b43c26144bd517943855fe8a" "37046960cf667c5ab3b76235d35a5db4763c531e706502a9067fa78db5a775c0" default))
+'(doom-modeline-mode nil)
+'(powerline-nano-theme t)
+'(alpha 75)
+'(dashboard-set-heading-icons t)
+'(dashboard-set-file-icons t)
+'(inhibit-startup-screen t)
+'(ispell-dictionary nil)
+'(indent-tabs-mode nil)
+'(tab-width 4)
+'(indent-line-function 'insert-tab)
+'(package-selected-packages
+  '(telephone-line
+    treemacs
+    treemacs-all-the-icons
+    treemacs-evil
+    treemacs-icons-dired
+    treemacs-magit
+    treemacs-projectile
+    treemacs-tab-bar
+    mood-line
+    doom-modeline
+    magit
+    projectile
+    all-the-icons
+    dashboard-ls
+    dashboard
+    badwolf-theme
+    company
+    exwm
+    org-noter
+    org-html-themes
+    nano-theme))
+'(tool-bar-mode nil)
+'(menu-bar-mode nil)
+'(scroll-bar-mode nil))
+
+;; faces
+(custom-set-faces
+'(default ((t (:family "JetBrainsMono Nerd Font" :foundry "JB" 
+  :slant normal :weight normal :height 100 :width normal)))))
+#+end_src
+
+** Other global runs
+#+begin_src emacs-lisp :tangle "yes"
+(ivy-mode)
+(global-linum-mode)
+(global-company-mode)
+#+end_src
+
+
+** doom-modeline
+#+begin_src emacs-lisp
+(use-package doom-modeline
+  :hook (after-init . doom-modeline-mode)
+  :custom    
+  (doom-modeline-height 25)
+  (doom-modeline-bar-width 1)
+  (doom-modeline-icon t)
+  (doom-modeline-major-mode-icon t)
+  (doom-modeline-major-mode-color-icon t)
+  (doom-modeline-buffer-file-name-style 'truncate-upto-project)
+  (doom-modeline-buffer-state-icon t)
+  (doom-modeline-buffer-modification-icon t)
+  (doom-modeline-minor-modes nil)
+  (doom-modeline-enable-word-count nil)
+  (doom-modeline-buffer-encoding t)
+  (doom-modeline-indent-info nil)
+  (doom-modeline-checker-simple-format t)
+  (doom-modeline-vcs-max-length 12)
+  (doom-modeline-env-version t)
+  (doom-modeline-irc-stylize 'identity)
+  (doom-modeline-github-timer nil)
+  (doom-modeline-gnus-timer nil))
+#+end_src
+
+** dashboard
+#+begin_src emacs-lisp :tangle "yes"
+(require 'dashboard-ls)
+;; (setq dashboard-items '((ls-directories .) (ls-files . 5)))
+(dashboard-setup-startup-hook)
+#+end_src
+
+
+* Custom Packages
+#+begin_src emacs-lisp :tangle "yes"
+(defun kb/add-package (pkg)
+  (setq pkg-path (concat "/home/nrdybhu1/.emacs.pak/" pkg))
+  (print pkg-path)
+  (add-to-list 'load-path pkg-path))
+
+(kb/add-package "exwm-background")
+(require 'exwm-background)
+
+;; (kb/add-package "nano-theme")
+#+end_src
+
+
+* Exwm
+#+begin_src emacs-lisp :tangle "yes"
+(require 'exwm)
+
+;; simple system tray
+;; (require 'exwm-systemtray)
+;; (exwm-systemtray-enable)
+
+
+(defun kb/run-cmd (cmd)
+    "Run command"
+	(start-process-shell-command cmd nil cmd))
+
+(defun kb/init ()
+    (kb/run-cmd "picom")
+    (kb/run-cmd "dunst")
+    (kb/run-cmd "polybar example --config=$HOME/.config/polybar/config.ini")
+    (kb/run-cmd (concat (getenv "HOME") "/.fehbg")))
+
+(defun kb/dec-vol ()
+    (kb/run-cmd "pactl set-sink-volume @DEFAULT_SINK@ -5%"))
+
+(defun kb/inc-vol ()
+    (kb/run-cmd "pactl set-sink-volume @DEFAULT_SINK@ +5%"))
+
+(setq exwm-workspace-number 4)
+;; (add-hook 'exwm-init-hook #'exwm-modeline-mode)
+(add-hook 'exwm-update-class-hook
+	  (lambda()
+	    "Rename the current buffer to the window's class name"
+	    (exwm-workspace-rename-buffer exwm-class-name)))
+
+;; keys
+(setq exwm-input-global-keys
+      `(
+        ;; 's-r': Reset (to line-mode).
+        ([?\s-r] . exwm-reset)
+        ;; 's-w': Switch workspace.
+        ([?\s-w] . exwm-workspace-switch)
+        ;; 's-&': Launch application.
+        ([?\s-&] . (lambda (command)
+                     (interactive (list (read-shell-command "Run: ")))
+                     (start-process-shell-command command nil command)))
+        ([?\s-d] . (lambda () (interactive) (kb/run-cmd "bash -c ~/.config/rofi/launchers/type-6/launcher.sh")))
+	    ([?\s-u] . (lambda () (interactive) (kb/run-cmd "playerctl play-pause")))
+        (,(kbd "s-<return>") . (lambda() (interactive) (kb/run-cmd "sakura")))
+	    (,(kbd "<XF86AudioRaiseVolume>") . ,(lambda() (interactive) (kb/inc-vol)))
+        (,(kbd "<XF86AudioLowerVolume>") . ,(lambda() (interactive) (kb/dec-vol)))
+	    (,(kbd "<XF86AudioMute>") . ,(lambda () (interactive) (kb/run-cmd "pactl set-sink-mute @DEFAULT_SINK@ toggle")))
+        (,(kbd "<print>") . ,(lambda () (interactive) (kb/run-cmd "flameshot gui")))
+        ;; 's-N': Switch to certain workspace.
+        ,@(mapcar (lambda (i)
+                    `(,(kbd (format "s-%d" i)) .
+                      (lambda ()
+                        (interactive)
+                        (exwm-workspace-switch-create ,i))))
+                  (number-sequence 0 9))))
+
+(setq exwm-input-simulation-keys
+      '(([?\C-b] . [left])
+        ([?\C-f] . [right])
+        ([?\C-p] . [up])
+        ([?\C-n] . [down])
+        ([?\C-a] . [home])
+        ([?\C-e] . [end])
+        ([?\M-v] . [prior])
+        ([?\C-v] . [next])
+        ([?\C-d] . [delete])
+        ([?\C-k] . [S-end delete])))
+
+(kb/init)
+;; (lambda ()
+;;   (interactive)
+;;   (start-process-shell-command "feh" nil "~/.fehbg"))
+;; (lambda ()
+;;   (interactive)
+;;   (start-process-shell-command "picom" nil "picom"))
+(load-theme 'zenburn t)
+;; (nano-dark)
+;; (exwm-enable)
+#+end_src
+
+
+* Custom functions
+** Runner functions
+#+begin_src emacs-lisp :tangle "yes"
+(set-frame-parameter nil 'alpha-background 100) ; For current frame
+(add-to-list 'default-frame-alist '(alpha-background . 100)) ; For all new frames henceforth
+
+(defun kb/compile-project ()
+  " Compile current project "
+  (setq make-exists (find-file "Makefile"))
+  (if make-exists
+  (compile "make")))
+
+(setq backup-directory-alist `(("." . "~/.saves")))
+#+end_src
