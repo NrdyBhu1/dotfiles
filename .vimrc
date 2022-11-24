@@ -27,3 +27,15 @@ au BufRead *.jinja2 set ft=html
 
 nmap <C-n> :Texplore<CR>
 vmap <C-n> :Texplore<CR>
+
+function! Build()
+	if &filetype ==# "rust"
+		call system("cargo build")
+	endif
+endfunction
+
+function! Run()
+	if &filetype ==# "rust"
+		call system("cargo run")
+	endif
+endfunction

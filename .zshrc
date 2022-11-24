@@ -108,11 +108,11 @@ source $ZSH/oh-my-zsh.sh
 alias ls='exa --icons'
 alias cat='cat -n'
 alias lzy='lazygit'
-
+alias tmux='tmux -u'
 alias copy='xclip -sel clip'
 
 # [[ -s /home/nrdybhu1/.autojump/etc/profile.d/autojump.sh ]] && source /home/nrdybhu1/.autojump/etc/profile.d/autojump.sh
-source .autojump/share/autojump/autojump.zsh
+source $HOME/.autojump/share/autojump/autojump.zsh
 
 . "$HOME/.cargo/env"
 
@@ -120,3 +120,4 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 alias config='/usr/bin/git --git-dir=/home/nrdybhu1/.cfg/ --work-tree=/home/nrdybhu1'
+function gi() { curl -sLw n https://www.toptal.com/developers/gitignore/api/$@ ;}

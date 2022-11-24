@@ -27,6 +27,10 @@ MiscNewTabAdjacent=FALSE
 MiscSearchDialogOpacity=100
 MiscShowUnsafePasteDialog=TRUE
 FontName=JetBrainsMono Nerd Font 10
-ColorPalette=#000000;#cc0000;#4e9a06;#c4a000;#3465a4;#75507b;#06989a;#d3d7cf;#555753;#ef2929;#8ae234;#fce94f;#739fcf;#ad7fa8;#34e2e2;#eeeeec
+ColorPalette=#3B4252;#BF616A;#A3BE8C;#EBCB8B;#81A1C1;#B48EAD;#88C0D0;#E5E9F0;#4C566A;#BF616A;#A3BE8C;#EBCB8B;#81A1C1;#B48EAD;#8FBCBB;#ECEFF4
 ScrollingBar=TERMINAL_SCROLLBAR_NONE
 
+ColorCursor=#D8DEE9
+ColorForeground=#D8DEE9
+ColorBackground=#2E3440
+ColorCursorUseDefault=FALSE
