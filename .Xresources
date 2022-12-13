@@ -1,0 +1,50 @@
+Xcursor.theme: Pop
+xterm*termName: xterm-256color
+xterm*faceName: JetBrainsMono Nerd Font
+xterm*faceSize: 10
+
+// afterglow
+// xterm*color0: rgb:00/00/00
+// xterm*color1: #151515
+// xterm*color2: #a53c23
+// xterm*color3: #7b9246
+// xterm*color4: #d3a04d
+// xterm*color5: #6c99bb
+// xterm*color6: #9f4e85
+// xterm*color7: #7dd6cf
+// xterm*color8: #d0d0d0
+// xterm*color9: #505050
+// xterm*color10: #a53c23
+// xterm*color11: #7b9246
+// xterm*color12: #d3a04d
+// xterm*color13: #547c99
+// xterm*color14: #9f4e85
+// xterm*color15: #7dd6cf
+// xterm*color16: #f5f5f5
+// xterm*background: #222222
+// xterm*foreground: #d0d0d0
+// xterm*cursorColor: #d0d0d0
+
+// everblush
+
+xterm*color0: #232a2d
+xterm*color1: #e57474
+xterm*color2: #8ccf7e
+xterm*color3: #e5c76b
+xterm*color4: #67b0e8
+xterm*color5: #c47fd5
+xterm*color6: #6cbfbf
+xterm*color7: #b3b9b8
+xterm*color8: #3b4244
+xterm*color9: #ef7e7e
+xterm*color10: #96d988
+xterm*color11: #f4d67a
+xterm*color12: #71baf2
+xterm*color13: #ce89df
+xterm*color14: #67cbe7
+xterm*color15: #bdc3c2
+xterm*background: #141b1e
+xterm*foreground: #dadada
+
+// padding
+xterm*internalBorder: 5
