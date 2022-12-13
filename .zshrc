@@ -125,3 +125,4 @@ function gi() { curl -sLw n https://www.toptal.com/developers/gitignore/api/$@ ;
 # wal
 # cat ~/.cache/wal/sequences &
 export PATH=/home/nrdybhu1/.nimble/bin:$PATH
+ alias dots='/usr/bin/env git --git-dir=/home/nrdybhu1/.cfg/ --work-tree=/home/nrdybhu1'
