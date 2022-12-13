@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>~/.config/nvim/init.vim.html</title>
+<meta name="Generator" content="Vim/8.0">
+<meta name="plugin-version" content="vim8.1_v2">
+<meta name="syntax" content="vim">
+<meta name="settings" content="number_lines,use_css,no_foldcolumn,expand_tabs,line_ids,prevent_copy=,use_input_for_pc=fallback">
+<meta name="colorscheme" content="everblush">
+<style>
+<!--
+pre { font-family: monospace; color: #dadada; background-color: #141b1e; }
+body { font-family: monospace; color: #dadada; background-color: #141b1e; }
+* { font-size: 1em; }
+.Normal { color: #dadada; background-color: #141b1e; padding-bottom: 1px; }
+.LineNr { color: #3b4244; }
+.Statement { color: #c47fd5; font-weight: bold; }
+.Operator { color: #67b0e8; }
+.PreProc { color: #67b0e8; }
+.Type { color: #67b0e8; font-weight: bold; }
+.String { color: #8ccf7e; }
+.Function { color: #67b0e8; }
+.Identifier { color: #e57474; }
+.Number { color: #6cbfbf; }
+.Special { color: #67b0e8; }
+.Delimiter { color: #b3b9b8; }
+.Comment { color: #3b4244; font-style: italic; }
+-->
+</style>
+
+<script>
+<!--
+
+/* function to open any folds containing a jumped-to line before jumping to it */
+function JumpToLine()
+{
+  var lineNum;
+  lineNum = window.location.hash;
+  lineNum = lineNum.substr(1); /* strip off '#' */
+
+  if (lineNum.indexOf('L') == -1) {
+    lineNum = 'L'+lineNum;
+  }
+  var lineElem = document.getElementById(lineNum);
+  /* Always jump to new location even if the line was hidden inside a fold, or
+   * we corrected the raw number to a line ID.
+   */
+  if (lineElem) {
+    lineElem.scrollIntoView(true);
+  }
+  return true;
+}
+if ('onhashchange' in window) {
+  window.onhashchange = JumpToLine;
+}
+
+-->
+</script>
+</head>
+<body onload='JumpToLine();'>
+<pre id='vimCodeElement'>
+<span id="L1" class="LineNr">  1 </span><span class="Statement">set</span> <span class="PreProc">runtimepath</span>^=~/.vim <span class="PreProc">runtimepath</span>+=~/.nvim/
+<span id="L2" class="LineNr">  2 </span><span class="Statement">let</span> <span class="Identifier">&amp;packpath</span> <span class="Operator">=</span> &amp;runtimepath
+<span id="L3" class="LineNr">  3 </span>
+<span id="L4" class="LineNr">  4 </span><span class="Statement">set</span> <span class="PreProc">guicursor</span>=n-v-c<span class="Statement">:</span>block-Cursor
+<span id="L5" class="LineNr">  5 </span><span class="Statement">source</span> ~/<span class="Operator">.</span>vimrc
+<span id="L6" class="LineNr">  6 </span><span class="Statement">colorscheme</span> everblush
+<span id="L7" class="LineNr">  7 </span><span class="Statement">lua</span> require'colorizer'<span class="Operator">.</span><span class="Normal">setup</span><span class="Delimiter">()</span>
+<span id="L8" class="LineNr">  8 </span><span class="Statement">lua</span> require'lualine'<span class="Operator">.</span><span class="Normal">setup</span><span class="Delimiter">()</span>
+<span id="L9" class="LineNr">  9 </span><span class="Statement">lua</span> require'nvim<span class="Operator">-</span>tree'<span class="Operator">.</span><span class="Normal">setup</span><span class="Delimiter">()</span>
+<span id="L10" class="LineNr"> 10 </span><span class="Statement">lua</span> require'neogit'<span class="Operator">.</span><span class="Normal">setup</span><span class="Delimiter">()</span>
+<span id="L11" class="LineNr"> 11 </span><span class="Statement">lua</span> <span class="Statement">vim</span><span class="Operator">.</span>notify <span class="Operator">=</span> <span class="Normal">require</span><span class="Delimiter">(</span><span class="String">'notify'</span><span class="Delimiter">)</span>
+<span id="L12" class="LineNr"> 12 </span><span class="Comment">&quot;&quot; lua require('plugin')</span>
+<span id="L13" class="LineNr"> 13 </span><span class="Comment">&quot;&quot; lua require 'nvim-treesitter.install'.compilers = { 'clang++'}</span>
+<span id="L14" class="LineNr"> 14 </span><span class="Comment">&quot;&quot; lua require('lsp')</span>
+<span id="L15" class="LineNr"> 15 </span><span class="Comment">&quot;&quot; lua require('evil')</span>
+<span id="L16" class="LineNr"> 16 </span>
+<span id="L17" class="LineNr"> 17 </span><span class="Comment">&quot; Find files using Telescope command-line sugar.</span>
+<span id="L18" class="LineNr"> 18 </span><span class="Statement">nnoremap</span> <span class="Delimiter">&lt;</span><span class="Special">leader</span><span class="Delimiter">&gt;</span>ff <span class="Delimiter">&lt;</span><span class="Special">cmd</span><span class="Delimiter">&gt;</span>Telescope find_files<span class="Delimiter">&lt;</span><span class="Special">cr</span><span class="Delimiter">&gt;</span>
+<span id="L19" class="LineNr"> 19 </span><span class="Statement">nnoremap</span> <span class="Delimiter">&lt;</span><span class="Special">leader</span><span class="Delimiter">&gt;</span>fg <span class="Delimiter">&lt;</span><span class="Special">cmd</span><span class="Delimiter">&gt;</span>Telescope live_grep<span class="Delimiter">&lt;</span><span class="Special">cr</span><span class="Delimiter">&gt;</span>
+<span id="L20" class="LineNr"> 20 </span><span class="Statement">nnoremap</span> <span class="Delimiter">&lt;</span><span class="Special">leader</span><span class="Delimiter">&gt;</span>fb <span class="Delimiter">&lt;</span><span class="Special">cmd</span><span class="Delimiter">&gt;</span>Telescope buffers<span class="Delimiter">&lt;</span><span class="Special">cr</span><span class="Delimiter">&gt;</span>
+<span id="L21" class="LineNr"> 21 </span><span class="Statement">nnoremap</span> <span class="Delimiter">&lt;</span><span class="Special">leader</span><span class="Delimiter">&gt;</span>fh <span class="Delimiter">&lt;</span><span class="Special">cmd</span><span class="Delimiter">&gt;</span>Telescope help_tags<span class="Delimiter">&lt;</span><span class="Special">cr</span><span class="Delimiter">&gt;</span>
+<span id="L22" class="LineNr"> 22 </span>
+<span id="L23" class="LineNr"> 23 </span><span class="Comment">&quot; Using Lua functions</span>
+<span id="L24" class="LineNr"> 24 </span><span class="Statement">nnoremap</span> <span class="Delimiter">&lt;</span><span class="Special">leader</span><span class="Delimiter">&gt;</span>ff <span class="Delimiter">&lt;</span><span class="Special">cmd</span><span class="Delimiter">&gt;</span>lua require('telescope.builtin').find_files()<span class="Delimiter">&lt;</span><span class="Special">cr</span><span class="Delimiter">&gt;</span>
+<span id="L25" class="LineNr"> 25 </span><span class="Statement">nnoremap</span> <span class="Delimiter">&lt;</span><span class="Special">leader</span><span class="Delimiter">&gt;</span>fg <span class="Delimiter">&lt;</span><span class="Special">cmd</span><span class="Delimiter">&gt;</span>lua require('telescope.builtin').live_grep()<span class="Delimiter">&lt;</span><span class="Special">cr</span><span class="Delimiter">&gt;</span>
+<span id="L26" class="LineNr"> 26 </span><span class="Statement">nnoremap</span> <span class="Delimiter">&lt;</span><span class="Special">leader</span><span class="Delimiter">&gt;</span>fb <span class="Delimiter">&lt;</span><span class="Special">cmd</span><span class="Delimiter">&gt;</span>lua require('telescope.builtin').buffers()<span class="Delimiter">&lt;</span><span class="Special">cr</span><span class="Delimiter">&gt;</span>
+<span id="L27" class="LineNr"> 27 </span><span class="Statement">nnoremap</span> <span class="Delimiter">&lt;</span><span class="Special">leader</span><span class="Delimiter">&gt;</span>fh <span class="Delimiter">&lt;</span><span class="Special">cmd</span><span class="Delimiter">&gt;</span>lua require('telescope.builtin').help_tags()<span class="Delimiter">&lt;</span><span class="Special">cr</span><span class="Delimiter">&gt;</span>
+<span id="L28" class="LineNr"> 28 </span>
+<span id="L29" class="LineNr"> 29 </span><span class="Comment">&quot;&quot; colorscheme onedark</span>
+<span id="L30" class="LineNr"> 30 </span>
+<span id="L31" class="LineNr"> 31 </span><span class="Statement">let</span> <span class="Identifier">g:coc_global_extensions</span> <span class="Operator">=</span> [<span class="String">'coc-json'</span>, <span class="String">'coc-godot'</span>, <span class="String">'coc-omnisharp'</span>, <span class="String">'coc-pyright'</span>, <span class="String">'coc-sumneko-lua'</span>, <span class="String">'coc-html'</span>, <span class="String">'coc-git'</span>, <span class="String">'coc-tsserver'</span>]
+<span id="L32" class="LineNr"> 32 </span>
+<span id="L33" class="LineNr"> 33 </span><span class="Comment">&quot; May need for vim (not neovim) since coc.nvim calculate byte offset by count</span>
+<span id="L34" class="LineNr"> 34 </span><span class="Comment">&quot; utf-8 byte sequence.</span>
+<span id="L35" class="LineNr"> 35 </span><span class="Statement">set</span> <span class="PreProc">encoding</span>=utf-8
+<span id="L36" class="LineNr"> 36 </span><span class="Comment">&quot; Some servers have issues with backup files, see #649.</span>
+<span id="L37" class="LineNr"> 37 </span><span class="Statement">set</span> <span class="PreProc">nobackup</span>
+<span id="L38" class="LineNr"> 38 </span><span class="Statement">set</span> <span class="PreProc">nowritebackup</span>
+<span id="L39" class="LineNr"> 39 </span>
+<span id="L40" class="LineNr"> 40 </span><span class="Comment">&quot; Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable</span>
+<span id="L41" class="LineNr"> 41 </span><span class="Comment">&quot; delays and poor user experience.</span>
+<span id="L42" class="LineNr"> 42 </span><span class="Statement">set</span> <span class="PreProc">updatetime</span>=300
+<span id="L43" class="LineNr"> 43 </span>
+<span id="L44" class="LineNr"> 44 </span><span class="Comment">&quot; Always show the signcolumn, otherwise it would shift the text each time</span>
+<span id="L45" class="LineNr"> 45 </span><span class="Comment">&quot; diagnostics appear/become resolved.</span>
+<span id="L46" class="LineNr"> 46 </span><span class="Statement">set</span> <span class="PreProc">signcolumn</span>=yes
+<span id="L47" class="LineNr"> 47 </span>
+<span id="L48" class="LineNr"> 48 </span><span class="Comment">&quot; Use tab for trigger completion with characters ahead and navigate.</span>
+<span id="L49" class="LineNr"> 49 </span><span class="Comment">&quot;</span> <span class="PreProc">NOTE:</span><span class="Comment"> There's always complete item selected by default, you may want to enable</span>
+<span id="L50" class="LineNr"> 50 </span><span class="Comment">&quot; no select by `&quot;suggest.noselect&quot;: true` in your configuration file.</span>
+<span id="L51" class="LineNr"> 51 </span><span class="Comment">&quot;</span> <span class="PreProc">NOTE:</span><span class="Comment"> Use command ':verbose imap &lt;tab&gt;' to make sure tab is not mapped by</span>
+<span id="L52" class="LineNr"> 52 </span><span class="Comment">&quot; other plugin before putting this into your config.</span>
+<span id="L53" class="LineNr"> 53 </span><span class="Statement">inoremap</span> <span class="Delimiter">&lt;</span><span class="Special">silent</span><span class="Delimiter">&gt;&lt;</span><span class="Special">expr</span><span class="Delimiter">&gt;</span> <span class="Delimiter">&lt;</span><span class="Special">TAB</span><span class="Delimiter">&gt;</span>
+<span id="L54" class="LineNr"> 54 </span><span class="Special">      \</span> coc#pum#<span class="Normal">visible</span><span class="Delimiter">()</span> ? coc#pum#<span class="Normal">next</span><span class="Delimiter">(</span><span class="Number">1</span><span class="Delimiter">)</span> :
+<span id="L55" class="LineNr"> 55 </span><span class="Special">      \</span> <span class="Normal">CheckBackspace</span><span class="Delimiter">()</span> ? <span class="String">&quot;</span><span class="Special">\&lt;</span><span class="String">Tab&gt;</span><span class="String">&quot;</span> :
+<span id="L56" class="LineNr"> 56 </span><span class="Special">      \</span> coc#<span class="Normal">refresh</span><span class="Delimiter">()</span>
+<span id="L57" class="LineNr"> 57 </span><span class="Statement">inoremap</span> <span class="Delimiter">&lt;</span><span class="Special">expr</span><span class="Delimiter">&gt;</span><span class="Delimiter">&lt;</span><span class="Special">S-TAB</span><span class="Delimiter">&gt;</span> coc#pum#visible() ? coc#pum#prev(1) : &quot;<span class="Delimiter">\&lt;</span><span class="Special">C-h</span><span class="Delimiter">&gt;</span>&quot;
+<span id="L58" class="LineNr"> 58 </span>
+<span id="L59" class="LineNr"> 59 </span><span class="Comment">&quot; Make &lt;CR&gt; to accept selected completion item or notify coc.nvim to format</span>
+<span id="L60" class="LineNr"> 60 </span><span class="Comment">&quot; &lt;C-g&gt;u breaks current undo, please make your own choice.</span>
+<span id="L61" class="LineNr"> 61 </span><span class="Statement">inoremap</span> <span class="Delimiter">&lt;</span><span class="Special">silent</span><span class="Delimiter">&gt;&lt;</span><span class="Special">expr</span><span class="Delimiter">&gt;</span> <span class="Delimiter">&lt;</span><span class="Special">CR</span><span class="Delimiter">&gt;</span> coc#pum#visible() ? coc#pum#confirm()
+<span id="L62" class="LineNr"> 62 </span><span class="Special">                              \</span>: &quot;\&lt;C-g&gt;u\&lt;CR&gt;\&lt;c-r&gt;=coc#on_enter()\&lt;CR&gt;&quot;
+<span id="L63" class="LineNr"> 63 </span>
+<span id="L64" class="LineNr"> 64 </span><span class="Statement">function</span>! CheckBackspace<span class="Delimiter">()</span> abort
+<span id="L65" class="LineNr"> 65 </span>  <span class="Statement">let</span> <span class="Identifier">col</span> <span class="Operator">=</span> <span class="Function">col</span><span class="Delimiter">(</span><span class="String">'.'</span><span class="Delimiter">)</span> <span class="Operator">-</span> <span class="Number">1</span>
+<span id="L66" class="LineNr"> 66 </span>  <span class="Statement">return</span> <span class="Operator">!</span><span class="Statement">col</span> <span class="Operator">||</span> <span class="Function">getline</span><span class="Delimiter">(</span><span class="String">'.'</span><span class="Delimiter">)</span>[<span class="Statement">col</span> <span class="Operator">-</span> <span class="Number">1</span>]  <span class="Operator">=~#</span> <span class="String">'\s'</span>
+<span id="L67" class="LineNr"> 67 </span><span class="Statement">endfunction</span>
+<span id="L68" class="LineNr"> 68 </span>
+<span id="L69" class="LineNr"> 69 </span><span class="Comment">&quot; Use &lt;c-space&gt; to trigger completion.</span>
+<span id="L70" class="LineNr"> 70 </span><span class="Statement">if</span> <span class="Function">has</span><span class="Delimiter">(</span><span class="String">'nvim'</span><span class="Delimiter">)</span>
+<span id="L71" class="LineNr"> 71 </span>  <span class="Statement">inoremap</span> <span class="Delimiter">&lt;</span><span class="Special">silent</span><span class="Delimiter">&gt;&lt;</span><span class="Special">expr</span><span class="Delimiter">&gt;</span> <span class="Delimiter">&lt;</span><span class="Special">c-space</span><span class="Delimiter">&gt;</span> coc#refresh()
+<span id="L72" class="LineNr"> 72 </span><span class="Statement">else</span>
+<span id="L73" class="LineNr"> 73 </span>  <span class="Statement">inoremap</span> <span class="Delimiter">&lt;</span><span class="Special">silent</span><span class="Delimiter">&gt;&lt;</span><span class="Special">expr</span><span class="Delimiter">&gt;</span> <span class="Delimiter">&lt;</span><span class="Special">c-@</span><span class="Delimiter">&gt;</span> coc#refresh()
+<span id="L74" class="LineNr"> 74 </span><span class="Statement">endif</span>
+<span id="L75" class="LineNr"> 75 </span>
+<span id="L76" class="LineNr"> 76 </span><span class="Comment">&quot; Use `[g` and `]g` to navigate diagnostics</span>
+<span id="L77" class="LineNr"> 77 </span><span class="Comment">&quot; Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.</span>
+<span id="L78" class="LineNr"> 78 </span><span class="Statement">nmap</span> <span class="Delimiter">&lt;</span><span class="Special">silent</span><span class="Delimiter">&gt;</span> [g <span class="Delimiter">&lt;</span><span class="Special">Plug</span><span class="Delimiter">&gt;</span>(coc-diagnostic-prev)
+<span id="L79" class="LineNr"> 79 </span><span class="Statement">nmap</span> <span class="Delimiter">&lt;</span><span class="Special">silent</span><span class="Delimiter">&gt;</span> ]g <span class="Delimiter">&lt;</span><span class="Special">Plug</span><span class="Delimiter">&gt;</span>(coc-diagnostic-next)
+<span id="L80" class="LineNr"> 80 </span>
+<span id="L81" class="LineNr"> 81 </span><span class="Comment">&quot; GoTo code navigation.</span>
+<span id="L82" class="LineNr"> 82 </span><span class="Statement">nmap</span> <span class="Delimiter">&lt;</span><span class="Special">silent</span><span class="Delimiter">&gt;</span> gd <span class="Delimiter">&lt;</span><span class="Special">Plug</span><span class="Delimiter">&gt;</span>(coc-definition)
+<span id="L83" class="LineNr"> 83 </span><span class="Statement">nmap</span> <span class="Delimiter">&lt;</span><span class="Special">silent</span><span class="Delimiter">&gt;</span> gy <span class="Delimiter">&lt;</span><span class="Special">Plug</span><span class="Delimiter">&gt;</span>(coc-type-definition)
+<span id="L84" class="LineNr"> 84 </span><span class="Statement">nmap</span> <span class="Delimiter">&lt;</span><span class="Special">silent</span><span class="Delimiter">&gt;</span> gi <span class="Delimiter">&lt;</span><span class="Special">Plug</span><span class="Delimiter">&gt;</span>(coc-implementation)
+<span id="L85" class="LineNr"> 85 </span><span class="Statement">nmap</span> <span class="Delimiter">&lt;</span><span class="Special">silent</span><span class="Delimiter">&gt;</span> gr <span class="Delimiter">&lt;</span><span class="Special">Plug</span><span class="Delimiter">&gt;</span>(coc-references)
+<span id="L86" class="LineNr"> 86 </span>
+<span id="L87" class="LineNr"> 87 </span><span class="Comment">&quot; Use K to show documentation in preview window.</span>
+<span id="L88" class="LineNr"> 88 </span><span class="Statement">nnoremap</span> <span class="Delimiter">&lt;</span><span class="Special">silent</span><span class="Delimiter">&gt;</span> K :call ShowDocumentation()<span class="Delimiter">&lt;</span><span class="Special">CR</span><span class="Delimiter">&gt;</span>
+<span id="L89" class="LineNr"> 89 </span>
+<span id="L90" class="LineNr"> 90 </span><span class="Statement">function</span>! ShowDocumentation<span class="Delimiter">()</span>
+<span id="L91" class="LineNr"> 91 </span>  <span class="Statement">if</span> <span class="Normal">CocAction</span><span class="Delimiter">(</span><span class="String">'hasProvider'</span>, <span class="String">'hover'</span><span class="Delimiter">)</span>
+<span id="L92" class="LineNr"> 92 </span>    <span class="Statement">call</span> <span class="Normal">CocActionAsync</span><span class="Delimiter">(</span><span class="String">'doHover'</span><span class="Delimiter">)</span>
+<span id="L93" class="LineNr"> 93 </span>  <span class="Statement">else</span>
+<span id="L94" class="LineNr"> 94 </span>    <span class="Statement">call</span> <span class="Function">feedkeys</span><span class="Delimiter">(</span><span class="String">'K'</span>, <span class="String">'in'</span><span class="Delimiter">)</span>
+<span id="L95" class="LineNr"> 95 </span>  <span class="Statement">endif</span>
+<span id="L96" class="LineNr"> 96 </span><span class="Statement">endfunction</span>
+<span id="L97" class="LineNr"> 97 </span>
+<span id="L98" class="LineNr"> 98 </span><span class="Comment">&quot; Highlight the symbol and its references when holding the cursor.</span>
+<span id="L99" class="LineNr"> 99 </span><span class="Statement">autocmd</span> <span class="Type">CursorHold</span> * <span class="Statement">silent</span> <span class="Statement">call</span> <span class="Normal">CocActionAsync</span><span class="Delimiter">(</span><span class="String">'highlight'</span><span class="Delimiter">)</span>
+<span id="L100" class="LineNr">100 </span>
+<span id="L101" class="LineNr">101 </span><span class="Comment">&quot; Symbol renaming.</span>
+<span id="L102" class="LineNr">102 </span><span class="Statement">nmap</span> <span class="Delimiter">&lt;</span><span class="Special">leader</span><span class="Delimiter">&gt;</span>rn <span class="Delimiter">&lt;</span><span class="Special">Plug</span><span class="Delimiter">&gt;</span>(coc-rename)
+<span id="L103" class="LineNr">103 </span>
+<span id="L104" class="LineNr">104 </span><span class="Comment">&quot; Formatting selected code.</span>
+<span id="L105" class="LineNr">105 </span><span class="Statement">xmap</span> <span class="Delimiter">&lt;</span><span class="Special">leader</span><span class="Delimiter">&gt;</span>f  <span class="Delimiter">&lt;</span><span class="Special">Plug</span><span class="Delimiter">&gt;</span>(coc-format-selected)
+<span id="L106" class="LineNr">106 </span><span class="Statement">nmap</span> <span class="Delimiter">&lt;</span><span class="Special">leader</span><span class="Delimiter">&gt;</span>f  <span class="Delimiter">&lt;</span><span class="Special">Plug</span><span class="Delimiter">&gt;</span>(coc-format-selected)
+<span id="L107" class="LineNr">107 </span>
+<span id="L108" class="LineNr">108 </span><span class="Statement">augroup</span> mygroup
+<span id="L109" class="LineNr">109 </span>  <span class="Statement">autocmd</span><span class="Operator">!</span>
+<span id="L110" class="LineNr">110 </span><span class="Comment">  &quot; Setup formatexpr specified filetype(s).</span>
+<span id="L111" class="LineNr">111 </span>  <span class="Statement">autocmd</span> <span class="Type">FileType</span> typescript,json <span class="Statement">setl</span> <span class="PreProc">formatexpr</span>=CocAction('formatSelected')
+<span id="L112" class="LineNr">112 </span><span class="Comment">  &quot; Update signature help on jump placeholder.</span>
+<span id="L113" class="LineNr">113 </span>  <span class="Statement">autocmd</span> <span class="Type">User</span> CocJumpPlaceholder <span class="Function">call</span> CocActionAsync<span class="Delimiter">(</span><span class="String">'showSignatureHelp'</span><span class="Delimiter">)</span>
+<span id="L114" class="LineNr">114 </span><span class="Statement">augroup</span> <span class="Statement">end</span>
+<span id="L115" class="LineNr">115 </span>
+<span id="L116" class="LineNr">116 </span><span class="Comment">&quot; Applying codeAction to the selected region.</span>
+<span id="L117" class="LineNr">117 </span><span class="Comment">&quot;</span> <span class="PreProc">Example:</span><span class="Comment"> `&lt;leader&gt;aap` for current paragraph</span>
+<span id="L118" class="LineNr">118 </span><span class="Statement">xmap</span> <span class="Delimiter">&lt;</span><span class="Special">leader</span><span class="Delimiter">&gt;</span>a  <span class="Delimiter">&lt;</span><span class="Special">Plug</span><span class="Delimiter">&gt;</span>(coc-codeaction-selected)
+<span id="L119" class="LineNr">119 </span><span class="Statement">nmap</span> <span class="Delimiter">&lt;</span><span class="Special">leader</span><span class="Delimiter">&gt;</span>a  <span class="Delimiter">&lt;</span><span class="Special">Plug</span><span class="Delimiter">&gt;</span>(coc-codeaction-selected)
+<span id="L120" class="LineNr">120 </span>
+<span id="L121" class="LineNr">121 </span><span class="Comment">&quot; Remap keys for applying codeAction to the current buffer.</span>
+<span id="L122" class="LineNr">122 </span><span class="Statement">nmap</span> <span class="Delimiter">&lt;</span><span class="Special">leader</span><span class="Delimiter">&gt;</span>ac  <span class="Delimiter">&lt;</span><span class="Special">Plug</span><span class="Delimiter">&gt;</span>(coc-codeaction)
+<span id="L123" class="LineNr">123 </span><span class="Comment">&quot; Apply AutoFix to problem on the current line.</span>
+<span id="L124" class="LineNr">124 </span><span class="Statement">nmap</span> <span class="Delimiter">&lt;</span><span class="Special">leader</span><span class="Delimiter">&gt;</span>qf  <span class="Delimiter">&lt;</span><span class="Special">Plug</span><span class="Delimiter">&gt;</span>(coc-fix-current)
+<span id="L125" class="LineNr">125 </span>
+<span id="L126" class="LineNr">126 </span><span class="Comment">&quot; Remap keys for refactor code actions.</span>
+<span id="L127" class="LineNr">127 </span><span class="Statement">nmap</span> <span class="Delimiter">&lt;</span><span class="Special">silent</span><span class="Delimiter">&gt;</span> <span class="Delimiter">&lt;</span><span class="Special">leader</span><span class="Delimiter">&gt;</span>re <span class="Delimiter">&lt;</span><span class="Special">Plug</span><span class="Delimiter">&gt;</span>(coc-codeaction-refactor)
+<span id="L128" class="LineNr">128 </span><span class="Statement">xmap</span> <span class="Delimiter">&lt;</span><span class="Special">silent</span><span class="Delimiter">&gt;</span> <span class="Delimiter">&lt;</span><span class="Special">leader</span><span class="Delimiter">&gt;</span>r  <span class="Delimiter">&lt;</span><span class="Special">Plug</span><span class="Delimiter">&gt;</span>(coc-codeaction-refactor-selected)
+<span id="L129" class="LineNr">129 </span><span class="Statement">nmap</span> <span class="Delimiter">&lt;</span><span class="Special">silent</span><span class="Delimiter">&gt;</span> <span class="Delimiter">&lt;</span><span class="Special">leader</span><span class="Delimiter">&gt;</span>r  <span class="Delimiter">&lt;</span><span class="Special">Plug</span><span class="Delimiter">&gt;</span>(coc-codeaction-refactor-selected)
+<span id="L130" class="LineNr">130 </span>
+<span id="L131" class="LineNr">131 </span><span class="Comment">&quot; Run the Code Lens action on the current line.</span>
+<span id="L132" class="LineNr">132 </span><span class="Statement">nmap</span> <span class="Delimiter">&lt;</span><span class="Special">leader</span><span class="Delimiter">&gt;</span>cl  <span class="Delimiter">&lt;</span><span class="Special">Plug</span><span class="Delimiter">&gt;</span>(coc-codelens-action)
+<span id="L133" class="LineNr">133 </span>
+<span id="L134" class="LineNr">134 </span><span class="Comment">&quot; Map function and class text objects</span>
+<span id="L135" class="LineNr">135 </span><span class="Comment">&quot;</span> <span class="PreProc">NOTE:</span><span class="Comment"> Requires 'textDocument.documentSymbol' support from the language server.</span>
+<span id="L136" class="LineNr">136 </span><span class="Statement">xmap</span> if <span class="Delimiter">&lt;</span><span class="Special">Plug</span><span class="Delimiter">&gt;</span>(coc-funcobj-i)
+<span id="L137" class="LineNr">137 </span><span class="Statement">omap</span> if <span class="Delimiter">&lt;</span><span class="Special">Plug</span><span class="Delimiter">&gt;</span>(coc-funcobj-i)
+<span id="L138" class="LineNr">138 </span><span class="Statement">xmap</span> af <span class="Delimiter">&lt;</span><span class="Special">Plug</span><span class="Delimiter">&gt;</span>(coc-funcobj-a)
+<span id="L139" class="LineNr">139 </span><span class="Statement">omap</span> af <span class="Delimiter">&lt;</span><span class="Special">Plug</span><span class="Delimiter">&gt;</span>(coc-funcobj-a)
+<span id="L140" class="LineNr">140 </span><span class="Statement">xmap</span> ic <span class="Delimiter">&lt;</span><span class="Special">Plug</span><span class="Delimiter">&gt;</span>(coc-classobj-i)
+<span id="L141" class="LineNr">141 </span><span class="Statement">omap</span> ic <span class="Delimiter">&lt;</span><span class="Special">Plug</span><span class="Delimiter">&gt;</span>(coc-classobj-i)
+<span id="L142" class="LineNr">142 </span><span class="Statement">xmap</span> ac <span class="Delimiter">&lt;</span><span class="Special">Plug</span><span class="Delimiter">&gt;</span>(coc-classobj-a)
+<span id="L143" class="LineNr">143 </span><span class="Statement">omap</span> ac <span class="Delimiter">&lt;</span><span class="Special">Plug</span><span class="Delimiter">&gt;</span>(coc-classobj-a)
+<span id="L144" class="LineNr">144 </span>
+<span id="L145" class="LineNr">145 </span><span class="Comment">&quot; Remap &lt;C-f&gt; and &lt;C-b&gt; for scroll float windows/popups.</span>
+<span id="L146" class="LineNr">146 </span><span class="Statement">if</span> <span class="Function">has</span><span class="Delimiter">(</span><span class="String">'nvim-0.4.0'</span><span class="Delimiter">)</span> <span class="Operator">||</span> <span class="Function">has</span><span class="Delimiter">(</span><span class="String">'patch-8.2.0750'</span><span class="Delimiter">)</span>
+<span id="L147" class="LineNr">147 </span>  <span class="Statement">nnoremap</span> <span class="Delimiter">&lt;</span><span class="Special">silent</span><span class="Delimiter">&gt;&lt;</span><span class="Special">nowait</span><span class="Delimiter">&gt;&lt;</span><span class="Special">expr</span><span class="Delimiter">&gt;</span> <span class="Delimiter">&lt;</span><span class="Special">C-f</span><span class="Delimiter">&gt;</span> coc#float#has_scroll() ? coc#float#scroll(1) : &quot;<span class="Delimiter">\&lt;</span><span class="Special">C-f</span><span class="Delimiter">&gt;</span>&quot;
+<span id="L148" class="LineNr">148 </span>  <span class="Statement">nnoremap</span> <span class="Delimiter">&lt;</span><span class="Special">silent</span><span class="Delimiter">&gt;&lt;</span><span class="Special">nowait</span><span class="Delimiter">&gt;&lt;</span><span class="Special">expr</span><span class="Delimiter">&gt;</span> <span class="Delimiter">&lt;</span><span class="Special">C-b</span><span class="Delimiter">&gt;</span> coc#float#has_scroll() ? coc#float#scroll(0) : &quot;<span class="Delimiter">\&lt;</span><span class="Special">C-b</span><span class="Delimiter">&gt;</span>&quot;
+<span id="L149" class="LineNr">149 </span>  <span class="Statement">inoremap</span> <span class="Delimiter">&lt;</span><span class="Special">silent</span><span class="Delimiter">&gt;&lt;</span><span class="Special">nowait</span><span class="Delimiter">&gt;&lt;</span><span class="Special">expr</span><span class="Delimiter">&gt;</span> <span class="Delimiter">&lt;</span><span class="Special">C-f</span><span class="Delimiter">&gt;</span> coc#float#has_scroll() ? &quot;<span class="Delimiter">\&lt;</span><span class="Special">c-r</span><span class="Delimiter">&gt;</span>=coc#float#scroll(1)<span class="Delimiter">\&lt;</span><span class="Special">cr</span><span class="Delimiter">&gt;</span>&quot; : &quot;<span class="Delimiter">\&lt;</span><span class="Special">Right</span><span class="Delimiter">&gt;</span>&quot;
+<span id="L150" class="LineNr">150 </span>  <span class="Statement">inoremap</span> <span class="Delimiter">&lt;</span><span class="Special">silent</span><span class="Delimiter">&gt;&lt;</span><span class="Special">nowait</span><span class="Delimiter">&gt;&lt;</span><span class="Special">expr</span><span class="Delimiter">&gt;</span> <span class="Delimiter">&lt;</span><span class="Special">C-b</span><span class="Delimiter">&gt;</span> coc#float#has_scroll() ? &quot;<span class="Delimiter">\&lt;</span><span class="Special">c-r</span><span class="Delimiter">&gt;</span>=coc#float#scroll(0)<span class="Delimiter">\&lt;</span><span class="Special">cr</span><span class="Delimiter">&gt;</span>&quot; : &quot;<span class="Delimiter">\&lt;</span><span class="Special">Left</span><span class="Delimiter">&gt;</span>&quot;
+<span id="L151" class="LineNr">151 </span>  <span class="Statement">vnoremap</span> <span class="Delimiter">&lt;</span><span class="Special">silent</span><span class="Delimiter">&gt;&lt;</span><span class="Special">nowait</span><span class="Delimiter">&gt;&lt;</span><span class="Special">expr</span><span class="Delimiter">&gt;</span> <span class="Delimiter">&lt;</span><span class="Special">C-f</span><span class="Delimiter">&gt;</span> coc#float#has_scroll() ? coc#float#scroll(1) : &quot;<span class="Delimiter">\&lt;</span><span class="Special">C-f</span><span class="Delimiter">&gt;</span>&quot;
+<span id="L152" class="LineNr">152 </span>  <span class="Statement">vnoremap</span> <span class="Delimiter">&lt;</span><span class="Special">silent</span><span class="Delimiter">&gt;&lt;</span><span class="Special">nowait</span><span class="Delimiter">&gt;&lt;</span><span class="Special">expr</span><span class="Delimiter">&gt;</span> <span class="Delimiter">&lt;</span><span class="Special">C-b</span><span class="Delimiter">&gt;</span> coc#float#has_scroll() ? coc#float#scroll(0) : &quot;<span class="Delimiter">\&lt;</span><span class="Special">C-b</span><span class="Delimiter">&gt;</span>&quot;
+<span id="L153" class="LineNr">153 </span><span class="Statement">endif</span>
+<span id="L154" class="LineNr">154 </span>
+<span id="L155" class="LineNr">155 </span><span class="Comment">&quot; Use CTRL-S for selections ranges.</span>
+<span id="L156" class="LineNr">156 </span><span class="Comment">&quot; Requires 'textDocument/selectionRange' support of language server.</span>
+<span id="L157" class="LineNr">157 </span><span class="Statement">nmap</span> <span class="Delimiter">&lt;</span><span class="Special">silent</span><span class="Delimiter">&gt;</span> <span class="Delimiter">&lt;</span><span class="Special">C-s</span><span class="Delimiter">&gt;</span> <span class="Delimiter">&lt;</span><span class="Special">Plug</span><span class="Delimiter">&gt;</span>(coc-range-select)
+<span id="L158" class="LineNr">158 </span><span class="Statement">xmap</span> <span class="Delimiter">&lt;</span><span class="Special">silent</span><span class="Delimiter">&gt;</span> <span class="Delimiter">&lt;</span><span class="Special">C-s</span><span class="Delimiter">&gt;</span> <span class="Delimiter">&lt;</span><span class="Special">Plug</span><span class="Delimiter">&gt;</span>(coc-range-select)
+<span id="L159" class="LineNr">159 </span>
+<span id="L160" class="LineNr">160 </span><span class="Comment">&quot; Add `:Format` command to format current buffer.</span>
+<span id="L161" class="LineNr">161 </span><span class="Statement">command</span><span class="Operator">!</span> <span class="Operator">-</span><span class="PreProc">nargs</span><span class="Operator">=</span><span class="Type">0</span> Format <span class="Statement">:</span>call <span class="Normal">CocActionAsync</span>(<span class="String">'format'</span>)
+<span id="L162" class="LineNr">162 </span>
+<span id="L163" class="LineNr">163 </span><span class="Comment">&quot; Add `:Fold` command to fold current buffer.</span>
+<span id="L164" class="LineNr">164 </span><span class="Statement">command</span><span class="Operator">!</span> <span class="Operator">-</span><span class="PreProc">nargs</span><span class="Operator">=?</span> Fold <span class="Statement">:</span>call     <span class="Normal">CocAction</span>(<span class="String">'fold'</span>, <span class="Delimiter">&lt;</span><span class="Special">f-args</span><span class="Delimiter">&gt;</span>)
+<span id="L165" class="LineNr">165 </span>
+<span id="L166" class="LineNr">166 </span><span class="Comment">&quot; Add `:OR` command for organize imports of the current buffer.</span>
+<span id="L167" class="LineNr">167 </span><span class="Statement">command</span><span class="Operator">!</span> <span class="Operator">-</span><span class="PreProc">nargs</span><span class="Operator">=</span><span class="Type">0</span> OR   <span class="Statement">:</span>call     <span class="Normal">CocActionAsync</span>(<span class="String">'runCommand'</span>, <span class="String">'editor.action.organizeImport'</span>)
+<span id="L168" class="LineNr">168 </span>
+<span id="L169" class="LineNr">169 </span><span class="Comment">&quot; Add (Neo)Vim's native statusline support.</span>
+<span id="L170" class="LineNr">170 </span><span class="Comment">&quot;</span> <span class="PreProc">NOTE:</span><span class="Comment"> Please see `:h coc-status` for integrations with external plugins that</span>
+<span id="L171" class="LineNr">171 </span><span class="Comment">&quot; provide custom statusline: lightline.vim, vim-airline.</span>
+<span id="L172" class="LineNr">172 </span><span class="Statement">set</span> <span class="PreProc">statusline</span>^=%{coc#status()}%{get(b<span class="Statement">:,</span>'coc_current_function'<span class="Statement">,</span>'')}
+<span id="L173" class="LineNr">173 </span>
+<span id="L174" class="LineNr">174 </span><span class="Comment">&quot; Mappings for CoCList</span>
+<span id="L175" class="LineNr">175 </span><span class="Comment">&quot; Show all diagnostics.</span>
+<span id="L176" class="LineNr">176 </span><span class="Statement">nnoremap</span> <span class="Delimiter">&lt;</span><span class="Special">silent</span><span class="Delimiter">&gt;&lt;</span><span class="Special">nowait</span><span class="Delimiter">&gt;</span> <span class="Delimiter">&lt;</span><span class="Special">space</span><span class="Delimiter">&gt;</span>a  :<span class="Delimiter">&lt;</span><span class="Special">C-u</span><span class="Delimiter">&gt;</span>CocList diagnostics<span class="Delimiter">&lt;</span><span class="Special">cr</span><span class="Delimiter">&gt;</span>
+<span id="L177" class="LineNr">177 </span><span class="Comment">&quot; Manage extensions.</span>
+<span id="L178" class="LineNr">178 </span><span class="Statement">nnoremap</span> <span class="Delimiter">&lt;</span><span class="Special">silent</span><span class="Delimiter">&gt;&lt;</span><span class="Special">nowait</span><span class="Delimiter">&gt;</span> <span class="Delimiter">&lt;</span><span class="Special">space</span><span class="Delimiter">&gt;</span>e  :<span class="Delimiter">&lt;</span><span class="Special">C-u</span><span class="Delimiter">&gt;</span>CocList extensions<span class="Delimiter">&lt;</span><span class="Special">cr</span><span class="Delimiter">&gt;</span>
+<span id="L179" class="LineNr">179 </span><span class="Comment">&quot; Show commands.</span>
+<span id="L180" class="LineNr">180 </span><span class="Statement">nnoremap</span> <span class="Delimiter">&lt;</span><span class="Special">silent</span><span class="Delimiter">&gt;&lt;</span><span class="Special">nowait</span><span class="Delimiter">&gt;</span> <span class="Delimiter">&lt;</span><span class="Special">space</span><span class="Delimiter">&gt;</span>c  :<span class="Delimiter">&lt;</span><span class="Special">C-u</span><span class="Delimiter">&gt;</span>CocList commands<span class="Delimiter">&lt;</span><span class="Special">cr</span><span class="Delimiter">&gt;</span>
+<span id="L181" class="LineNr">181 </span><span class="Comment">&quot; Find symbol of current document.</span>
+<span id="L182" class="LineNr">182 </span><span class="Statement">nnoremap</span> <span class="Delimiter">&lt;</span><span class="Special">silent</span><span class="Delimiter">&gt;&lt;</span><span class="Special">nowait</span><span class="Delimiter">&gt;</span> <span class="Delimiter">&lt;</span><span class="Special">space</span><span class="Delimiter">&gt;</span>o  :<span class="Delimiter">&lt;</span><span class="Special">C-u</span><span class="Delimiter">&gt;</span>CocList outline<span class="Delimiter">&lt;</span><span class="Special">cr</span><span class="Delimiter">&gt;</span>
+<span id="L183" class="LineNr">183 </span><span class="Comment">&quot; Search workspace symbols.</span>
+<span id="L184" class="LineNr">184 </span><span class="Statement">nnoremap</span> <span class="Delimiter">&lt;</span><span class="Special">silent</span><span class="Delimiter">&gt;&lt;</span><span class="Special">nowait</span><span class="Delimiter">&gt;</span> <span class="Delimiter">&lt;</span><span class="Special">space</span><span class="Delimiter">&gt;</span>s  :<span class="Delimiter">&lt;</span><span class="Special">C-u</span><span class="Delimiter">&gt;</span>CocList -I symbols<span class="Delimiter">&lt;</span><span class="Special">cr</span><span class="Delimiter">&gt;</span>
+<span id="L185" class="LineNr">185 </span><span class="Comment">&quot; Do default action for next item.</span>
+<span id="L186" class="LineNr">186 </span><span class="Statement">nnoremap</span> <span class="Delimiter">&lt;</span><span class="Special">silent</span><span class="Delimiter">&gt;&lt;</span><span class="Special">nowait</span><span class="Delimiter">&gt;</span> <span class="Delimiter">&lt;</span><span class="Special">space</span><span class="Delimiter">&gt;</span>j  :<span class="Delimiter">&lt;</span><span class="Special">C-u</span><span class="Delimiter">&gt;</span>CocNext<span class="Delimiter">&lt;</span><span class="Special">CR</span><span class="Delimiter">&gt;</span>
+<span id="L187" class="LineNr">187 </span><span class="Comment">&quot; Do default action for previous item.</span>
+<span id="L188" class="LineNr">188 </span><span class="Statement">nnoremap</span> <span class="Delimiter">&lt;</span><span class="Special">silent</span><span class="Delimiter">&gt;&lt;</span><span class="Special">nowait</span><span class="Delimiter">&gt;</span> <span class="Delimiter">&lt;</span><span class="Special">space</span><span class="Delimiter">&gt;</span>k  :<span class="Delimiter">&lt;</span><span class="Special">C-u</span><span class="Delimiter">&gt;</span>CocPrev<span class="Delimiter">&lt;</span><span class="Special">CR</span><span class="Delimiter">&gt;</span>
+<span id="L189" class="LineNr">189 </span><span class="Comment">&quot; Resume latest coc list.</span>
+<span id="L190" class="LineNr">190 </span><span class="Statement">nnoremap</span> <span class="Delimiter">&lt;</span><span class="Special">silent</span><span class="Delimiter">&gt;&lt;</span><span class="Special">nowait</span><span class="Delimiter">&gt;</span> <span class="Delimiter">&lt;</span><span class="Special">space</span><span class="Delimiter">&gt;</span>p  :<span class="Delimiter">&lt;</span><span class="Special">C-u</span><span class="Delimiter">&gt;</span>CocListResume<span class="Delimiter">&lt;</span><span class="Special">CR</span><span class="Delimiter">&gt;</span>
+<span id="L191" class="LineNr">191 </span>
+<span id="L192" class="LineNr">192 </span><span class="Statement">if</span> <span class="Function">has</span><span class="Delimiter">(</span><span class="String">'gui'</span><span class="Delimiter">)</span>
+<span id="L193" class="LineNr">193 </span>    <span class="Statement">set</span> <span class="PreProc">background</span>=dark
+<span id="L194" class="LineNr">194 </span>    <span class="Statement">set</span> <span class="PreProc">guifont</span>=JetBrainsMono\ Nerd\ Font<span class="Statement">:</span>h12
+<span id="L195" class="LineNr">195 </span><span class="Statement">endif</span>
+</pre>
+</body>
+</html>
+<!-- vim: set foldmethod=manual : -->

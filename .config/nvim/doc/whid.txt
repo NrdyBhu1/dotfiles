@@ -1,0 +1,15 @@
+*whid.txt* 			    minimal word searcher for neovim
+
+*whid-commands*
+====================================================================
+
+Commands:
+:Whid {word}
+    Search and open a window with all files having occurances {word}
+
+:WhidTodo
+    Search all TODOs in current folder
+
+====================================================================
+
+vim:tw=78:ts=8:noet:ft=help:norl:

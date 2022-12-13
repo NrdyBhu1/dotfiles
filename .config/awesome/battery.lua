@@ -9,6 +9,20 @@ battery_widget.forced_height = 30
 
 local is_10 = false
 
+function send_noti()
+	naughty.notify({
+		title = "Low Battery",
+		border_width = 0,
+		text = "Please connect your laptop to charger soon",
+		ontop = true,
+		timeout = 0,
+		position = "top_right",
+		icon_size = 200,
+		icon = os.getenv("HOME") .. "/.config/awesome/astro.jpg",
+		preset = naughty.config.presets.critical,
+	})
+end
+
 function update_battery(widget)
 	local fd = io.popen("~/.config/i3blocks/battery3")
 	local status = fd:read("*all")
@@ -44,17 +58,7 @@ function update_battery(widget)
 	if status <= 10 then
 		if not is_10 then
 			is_10 = true	
-			naughty.notify({
-				title = "Low Battery",
-				border_width = 0,
-				text = "Please connect your laptop to charger soon",
-				ontop = true,
-				timeout = 0,
-				position = "top_right",
-				icon_size = 200,
-				icon = os.getenv("HOME") .. "/.config/awesome/astro.jpg",
-				preset = naughty.config.presets.critical,
-			})
+			send_noti()
 		end
 	else
 		if is_10 then

@@ -15,7 +15,8 @@ set mouse=a
 set nu
 set nowrap
 set autoindent
-colorscheme fnaqevan
+colorscheme everblush
+set termguicolors
 " AirlineTheme fairyfloss
 
 " if has('nvim')
@@ -24,9 +25,6 @@ colorscheme fnaqevan
 " vim ft=vim
 
 au BufRead *.jinja2 set ft=html
-
-nmap <C-n> :Texplore<CR>
-vmap <C-n> :Texplore<CR>
 
 function! Build()
 	if &filetype ==# "rust"

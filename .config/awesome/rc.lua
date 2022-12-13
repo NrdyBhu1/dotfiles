@@ -23,12 +23,8 @@ local hotkeys_popup = require("awful.hotkeys_popup")
 require("awful.hotkeys_popup.keys")
 require("volume")
 require("battery")
--- require("awesome-freedesktop")
 
 -- {{{ Error handling
--- Check if awesome encountered an error during startup and fell back to
--- another config (This code will only ever execute for the fallback config)
--- @DOC_ERROR_HANDLING@
 naughty.connect_signal("request::display_error", function(message, startup)
     naughty.notification {
         urgency = "critical",
@@ -36,33 +32,20 @@ naughty.connect_signal("request::display_error", function(message, startup)
         message = message
     }
 end)
+--- }}}
+
+-- {{{ Startup
+require("startup")
+beautiful.init(gears.filesystem.get_themes_dir() .. "gtk/theme.lua")
+beautiful.useless_gap = 0
+-- beautiful.init(os.getenv("HOME") .. "/.config/awesome/retro/theme.lua")
 -- }}}
 
--- {{{ Variable definitions
--- @DOC_LOAD_THEME@
--- Themes define colours, icons, font and wallpapers.
-beautiful.init(gears.filesystem.get_themes_dir() .. "gtk/theme.lua")
-
--- @DOC_DEFAULT_APPLICATIONS@
--- This is used later as the default terminal and editor to run.
-terminal = os.getenv("TERMINAL") or "xterm"
+terminal = "gnome-terminal"
 editor = os.getenv("EDITOR") or "nano"
 editor_cmd = terminal .. " -e " .. editor
+modkey = "Mod4"
 
--- Default modkey.
--- Usually, Mod4 is the key with a logo between Control and Alt.
--- If you do not like this or do not have such a key,
--- I suggest you to remap Mod4 to another key using xmodmap or other tools.
--- However, you can use another modifier like Mod1, but it may interact with others.
-modkey = "Mod1"
--- }}}
-
-
--- {{{ Launch on startup
--- @DOC_MENU@
-require("startup")
--- Launches applications on startup
--- }}}
 
 -- {{{ Menu
 -- @DOC_MENU@
@@ -110,12 +93,12 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 -- Table of layouts to cover with awful.layout.inc, order matters.
 tag.connect_signal("request::default_layouts", function()
     awful.layout.append_default_layouts({
-        awful.layout.suit.max,
-        awful.layout.suit.floating,
         awful.layout.suit.tile,
         awful.layout.suit.tile.left,
         awful.layout.suit.tile.bottom,
         awful.layout.suit.tile.top,
+        awful.layout.suit.floating,
+        awful.layout.suit.max,
         awful.layout.suit.fair,
         awful.layout.suit.fair.horizontal,
         awful.layout.suit.spiral,
@@ -154,12 +137,12 @@ end)
 mykeyboardlayout = awful.widget.keyboardlayout()
 
 -- Create a textclock widget
-mytextclock = wibox.widget.textclock()
+mytextclock = wibox.widget.textclock(" %a %d-%m-%y %I:%M ")
 
 -- @DOC_FOR_EACH_SCREEN@
 screen.connect_signal("request::desktop_decoration", function(s)
     -- Each screen has its own tag table.
-    awful.tag({ "1", "2", "3", "4" }, s, awful.layout.layouts[1])
+    awful.tag({ " 1 ",  " 2 ", " 3 ", " 4 " }, s, awful.layout.layouts[1])
 
     -- Create a promptbox for each screen
     s.mypromptbox = awful.widget.prompt()
@@ -176,27 +159,6 @@ screen.connect_signal("request::desktop_decoration", function(s)
         }
     }
 
-    -- Create a taglist widget
-    -- s.mytaglist = awful.widget.taglist {
-    --     screen  = s,
-    --     filter  = awful.widget.taglist.filter.all,
-    --     buttons = {
-    --         awful.button({ }, 1, function(t) t:view_only() end),
-    --         awful.button({ modkey }, 1, function(t)
-    --                                         if client.focus then
-    --                                             client.focus:move_to_tag(t)
-    --                                         end
-    --                                     end),
-    --         awful.button({ }, 3, awful.tag.viewtoggle),
-    --         awful.button({ modkey }, 3, function(t)
-    --                                         if client.focus then
-    --                                             client.focus:toggle_tag(t)
-    --                                         end
-    --                                     end),
-    --         awful.button({ }, 4, function(t) awful.tag.viewprev(t.screen) end),
-    --         awful.button({ }, 5, function(t) awful.tag.viewnext(t.screen) end),
-    --     }
-    -- }
 	local taglist_buttons = {
 		awful.button({ }, 1, function(t) t:view_only() end),
 		awful.button({ modkey }, 1, function(t)
@@ -214,75 +176,12 @@ screen.connect_signal("request::desktop_decoration", function(s)
 		awful.button({ }, 5, function(t) awful.tag.viewnext(t.screen) end),
 	}
 
-	s.mytaglist = awful.widget.taglist {
-	   screen  = s,
-	   filter  = awful.widget.taglist.filter.all,
-	   style   = {
-		  shape = gears.shape.powerline
-	   },
-	   layout   = {
-		  spacing = -12,
-		  spacing_widget = {
-			 color  = '#dddddd',
-			 shape  = gears.shape.powerline,
-			 widget = wibox.widget.separator,
-		  },
-		  layout  = wibox.layout.fixed.horizontal
-	   },
-	   widget_template = {
-		  {
-			 {
-				{
-				   {
-					  {
-						 id     = 'index_role',
-						 widget = wibox.widget.textbox,
-					  },
-					  margins = 4,
-					  widget  = wibox.container.margin,
-				   },
-				   bg     = '#525252',
-				   shape  = gears.shape.circle,
-				   widget = wibox.container.background,
-				},
-				{
-				   {
-					  id     = 'icon_role',
-					  widget = wibox.widget.imagebox,
-				   },
-				   margins = 2,
-				   widget  = wibox.container.margin,
-				},
-				layout = wibox.layout.fixed.horizontal,
-			 },
-			 left  = 18,
-			 right = 18,
-			 widget = wibox.container.margin
-		  },
-		  id     = 'background_role',
-		  widget = wibox.container.background,
-		  -- Add support for hover colors and an index label
-		  create_callback = function(self, c3, index, objects) --luacheck: no unused args
-			  self:get_children_by_id('index_role')[1].markup = '<b> '..index..' </b>'
-			  self:connect_signal('mouse::enter', 
-			  function()
-					  if self.bg ~= '#aaddaa' then
-						 self.backup     = self.bg
-						 self.has_backup = true
-					  end
-					  self.bg = '#aaddaa'
-			  end)
-			  self:connect_signal('mouse::leave', 
-			  function()
-				  if self.has_backup then self.bg = self.backup end
-			  end)
-		  end,
-		  update_callback = function(self, c3, index, objects) --luacheck: no unused args
-			  self:get_children_by_id('index_role')[1].markup = '<b> '..index..' </b>'
-		  end,
-	   },
-	   buttons = taglist_buttons
-	} 
+    -- Create a taglist widget
+    s.mytaglist = awful.widget.taglist {
+        screen  = s,
+        filter  = awful.widget.taglist.filter.all,
+        buttons =  taglist_buttons
+	}
 
     -- @TASKLIST_BUTTON@
     -- Create a tasklist widget
@@ -309,7 +208,7 @@ screen.connect_signal("request::desktop_decoration", function(s)
             layout = wibox.layout.align.horizontal,
             { -- Left widgets
                 layout = wibox.layout.fixed.horizontal,
-                mylauncher,
+                -- mylauncher,
                 s.mytaglist,
                 s.mypromptbox,
             },
@@ -343,13 +242,13 @@ awful.mouse.append_global_mousebindings({
 
 -- General Awesome keys
 awful.keyboard.append_global_keybindings({
-    awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
+    awful.key({ modkey,	"Control" }, "h",      hotkeys_popup.show_help,
               {description="show help", group="awesome"}),
-    awful.key({ modkey,           }, "w", function () mymainmenu:show() end,
+    awful.key({ modkey,         }, "w", function () mymainmenu:show() end,
               {description = "show main menu", group = "awesome"}),
     awful.key({ modkey, "Control" }, "r", awesome.restart,
               {description = "reload awesome", group = "awesome"}),
-    awful.key({ modkey, "Shift"   }, "q", awesome.quit,
+    awful.key({ modkey, "Shift"  }, "q", awesome.quit,
               {description = "quit awesome", group = "awesome"}),
     awful.key({ modkey }, "x",
               function ()
@@ -365,8 +264,10 @@ awful.keyboard.append_global_keybindings({
               {description = "open a terminal", group = "launcher"}),
     awful.key({ modkey },            "r",     function () awful.screen.focused().mypromptbox:run() end,
               {description = "run prompt", group = "launcher"}),
-    awful.key({ modkey }, "p", function() menubar.show() end,
-              {description = "show the menubar", group = "launcher"}),
+    awful.key({ modkey }, "p", function()
+			awful.spawn("rofi -show drun -theme /home/nrdybhu1/.config/rofi/launchers/type-3/style-10.rasi") 
+		end,
+		  {description = "show the menubar", group = "launcher"}),
 	
 	awful.key({ modkey }, "u", function ()
 		awful.util.spawn("playerctl play-pause") end),
@@ -557,6 +458,8 @@ client.connect_signal("request::default_keybindings", function()
                 {description = "move to screen", group = "client"}),
         awful.key({ modkey,           }, "t",      function (c) c.ontop = not c.ontop            end,
                 {description = "toggle keep on top", group = "client"}),
+		awful.key({modkey, 			  }, "s",	   function (c) c.sticky = not c.sticky			 end,
+				{description = "toggle sticky", group = "client"}),
         awful.key({ modkey,           }, "n",
             function (c)
                 -- The client currently has the input focus, so it cannot be
@@ -597,10 +500,11 @@ ruled.client.connect_signal("request::rules", function()
         id         = "global",
         rule       = { },
         properties = {
+			titlebars_enabled = false,
             focus     = awful.client.focus.filter,
             raise     = true,
             screen    = awful.screen.preferred,
-            placement = awful.placement.no_overlap+awful.placement.no_offscreen
+            placement = awful.placement.no_overlap+awful.placement.no_offscreen,
         }
     }
 
@@ -634,8 +538,18 @@ ruled.client.connect_signal("request::rules", function()
         -- @DOC_CSD_TITLEBARS@
         id         = "titlebars",
         rule_any   = { type = { "normal", "dialog" } },
-        properties = { titlebars_enabled = true      }
+        properties = { titlebars_enabled = false }
     }
+
+	ruled.client.append_rule {
+		rule	   = { name = "Picture-in-picture"	},
+		properties = { titlebars_enabled = false, floating = true, ontop = true, sticky = true }
+	}
+
+	ruled.client.append_rule {
+		rule 	   = { class = "xterm"   },
+		properties = { floating = true }
+	}
 
     -- Set Firefox to always map on the tag named "2" on screen 1.
     -- ruled.client.append_rule {

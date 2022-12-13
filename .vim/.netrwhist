@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =7
+let g:netrw_dirhist_7='/home/nrdybhu1/.config/nvim/plugin'
+let g:netrw_dirhist_6='/home/nrdybhu1/Programming/nrdybhu1/reidan/nova'
+let g:netrw_dirhist_5='/home/nrdybhu1/Programming/nrdybhu1/pog2D/src'
+let g:netrw_dirhist_4='/home/nrdybhu1/Programming/nrdybhu1/yuta no yuuki/violet'
+let g:netrw_dirhist_3='/home/nrdybhu1/Programming/nrdybhu1/yuta no yuuki'
+let g:netrw_dirhist_2='/usr/share/xsessions'
+let g:netrw_dirhist_1='/home/nrdybhu1/Programming/thirdparty/ogre/CMake'
+let g:netrw_dirhist_0='/home/nrdybhu1/Programming/nrdybhu1/sam'
+let g:netrw_dirhist_9='/home/nrdybhu1/Programming/nrdybhu1/sam/.ipynb_checkpoints'
+let g:netrw_dirhist_8='/home/nrdybhu1/Programming/nrdybhu1/sam'
