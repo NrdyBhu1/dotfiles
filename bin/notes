@@ -1,0 +1,57 @@
+#!/usr/bin/env bash
+
+set -e
+
+program_name="$0"
+notesdir="$HOME/.notes"
+
+die() {
+    printf "%s\n" "$1"
+    exit 1
+}
+
+check_notes_dir() {
+	[ -d "$notesdir" ] || mkdir "$notesdir"
+}
+
+show_notes() {
+	# find "$notesdir" -type f | while read -n line;
+	for line in "$notesdir/*.wiki"
+	do
+		printf "\x1b[1;34m%s\x1b[0;0m - %s\n" "`basename $line`" "`head -n 1 $line`"
+	done
+}
+
+help_msg() {
+	printf "USAGE:\n"
+	printf "\x1b[1;32m%s\x1b[0;0m [OPTIONS]\n" "$program_name"
+	printf "    \x1b[1;35m%s\x1b[0;0m\tHelp message\n" "-h"
+	printf "    \x1b[1;35m%s\x1b[0;0m\tList notes\n" "-l"
+	printf "    \x1b[1;35m%s\x1b[0;0m\tEdit new note\n" "-n"
+	printf "    \x1b[1;35m%s\x1b[0;0m\tShow note\n" "-s"
+	printf "    \x1b[1;35m%s\x1b[0;0m\tEdit a note\n" "-e"
+}
+
+check_notes_dir
+case "$1" in
+	-h)
+		help_msg
+		;;
+	-l)
+		show_notes
+		;;
+	-n)
+		$EDITOR `mktemp -p $notesdir note-XXXXXX.wiki`
+		;;
+	-s)
+		[ -n "$2" ] && [ -f "$notesdir/$2" ] && cat "$notesdir/$2" || die "No such file $2"
+		;;
+	-e)
+		[ -n "$2" ] && [ -f "$notesdir/$2" ] && $EDITOR "$notesdir/$2" || die "No such file $2"
+		;;
+	*)
+		help_msg
+		;;
+esac
+
+exit 0
