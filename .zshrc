@@ -13,7 +13,8 @@ export ZSH="$HOME/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="intheloop"
+# ZSH_THEME="af-magic"
+ZSH_THEME="flazz"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -105,13 +106,11 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-alias ls='exa --icons'
-# alias cat='cat -n'
-alias lzy='lazygit'
-alias tmux='tmux -u'
-alias copy='xclip -sel clip'
+export SCREENRC=$HOME/.config/screenrc
+export HISTSIZE=1000
+export HISTCONTROL=ignorespace
+export DOTNET_ROOT=$HOME/dotnet
 
-# [[ -s /home/nrdybhu1/.autojump/etc/profile.d/autojump.sh ]] && source /home/nrdybhu1/.autojump/etc/profile.d/autojump.sh
 source $HOME/.autojump/share/autojump/autojump.zsh
 
 . "$HOME/.cargo/env"
@@ -119,10 +118,22 @@ source $HOME/.autojump/share/autojump/autojump.zsh
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-alias config='/usr/bin/git --git-dir=/home/nrdybhu1/.cfg/ --work-tree=/home/nrdybhu1'
+
+# alias config='/usr/bin/git --git-dir=/home/nrdybhu1/.cfg/ --work-tree=/home/nrdybhu1'
+
 function gi() { curl -sLw n https://www.toptal.com/developers/gitignore/api/$@ ;}
 
-# wal
-# cat ~/.cache/wal/sequences &
-export PATH=/home/nrdybhu1/.nimble/bin:$PATH
- alias dots='/usr/bin/env git --git-dir=/home/nrdybhu1/.cfg/ --work-tree=/home/nrdybhu1'
+export PATH=$HOME/bin:$HOME/.npm-global/bin:$HOME/.cargo/bin/:$HOME/dotnet:$HOME/.local/bin:$HOME/go/bin:$HOME/.nimble/bin:/opt/haxe:/opt/hashlink:$PATH
+
+alias dots='/usr/bin/env git --git-dir=/home/nrdybhu1/.cfg/ --work-tree=/home/nrdybhu1'
+alias clear='clear -x'
+# alias ls='lsd'
+# alias cat='cat -n'
+# alias lzy='lazygit'
+alias tmux='tmux -u'
+alias copy='xclip -sel clip'
+# eval "$(oh-my-posh init zsh)"
+bindkey -e
+# cat .cache/wal/sequences
+
+export PATH=$PATH:/home/nrdybhu1/.spicetify

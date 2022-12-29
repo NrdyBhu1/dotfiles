@@ -44,13 +44,13 @@ function update_battery(widget)
 	elseif status >= 50 then
 		battery = "<span background='green' color='black'> " .. battery .. "</span>"
 	elseif status >= 40 then
-		battery = "<span background='yellow' color='black'> " .. battery .. "</span>"
+		battery = "<span background='green' color='black'> " .. battery .. "</span>"
 	elseif status >= 30 then
 		battery = "<span background='yellow' color='black'> " .. battery .. "</span>"
 	elseif status >= 20 then
 		battery = "<span background='yellow' color='black'> " .. battery .. "</span>"
 	elseif status >= 10 then
-		battery = "<span background='yellow' color='black'> " .. battery .. "</span>"
+		battery = "<span background='red' color='black'> " .. battery .. "</span>"
 	else
 		battery = "<span background='red' color='black'> " .. battery .. "</span>"
 	end

@@ -3,7 +3,7 @@ let &packpath = &runtimepath
 
 set guicursor=n-v-c:block-Cursor
 source ~/.vimrc
-colorscheme everblush
+colorscheme catppuccin
 "" lua require'plugins'
 "" lua require('plugin')
 "" lua require 'nvim-treesitter.install'.compilers = { 'clang++'}
@@ -24,7 +24,7 @@ nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
 
 "" colorscheme onedark
 
-let g:coc_global_extensions = ['coc-json', 'coc-rust-analyzer', 'coc-godot', 'coc-omnisharp', 'coc-jedi', 'coc-sumneko-lua', 'coc-html', 'coc-git', 'coc-tsserver']
+let g:coc_global_extensions = ['coc-json', 'coc-haxe', 'coc-rust-analyzer', 'coc-godot', 'coc-omnisharp', 'coc-jedi', 'coc-sumneko-lua', 'coc-html', 'coc-git', 'coc-tsserver']
 
 " May need for vim (not neovim) since coc.nvim calculate byte offset by count
 " utf-8 byte sequence.

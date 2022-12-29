@@ -29,8 +29,11 @@ MiscShowUnsafePasteDialog=TRUE
 FontName=JetBrainsMono Nerd Font 10
 ColorPalette=#3B4252;#BF616A;#A3BE8C;#EBCB8B;#81A1C1;#B48EAD;#88C0D0;#E5E9F0;#4C566A;#BF616A;#A3BE8C;#EBCB8B;#81A1C1;#B48EAD;#8FBCBB;#ECEFF4
 ScrollingBar=TERMINAL_SCROLLBAR_NONE
-
 ColorCursor=#D8DEE9
 ColorForeground=#D8DEE9
 ColorBackground=#2E3440
 ColorCursorUseDefault=FALSE
+BackgroundMode=TERMINAL_BACKGROUND_IMAGE
+BackgroundImageFile=/home/nrdybhu1/wallpapers/Anime-Girls-Holding-Programming-Books/C/Nagato_Yuki_Backflip_With_C_Programming_Language.png
+BackgroundImageStyle=TERMINAL_BACKGROUND_STYLE_CENTERED
+

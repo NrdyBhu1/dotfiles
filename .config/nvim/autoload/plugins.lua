@@ -1,5 +1,5 @@
 
-require('colorizer').setup()
+-- require('colorizer').setup()
 require('lualine').setup()
 require('nvim-tree').setup()
 require('neogit').setup()
