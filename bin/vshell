@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+filename=`mktemp -p /tmp term-XXXXXX`
+
+echo -ne "#!/usr/bin/env bash\n\n" | tee $filename
+$EDITOR $filename
+bash $filename
+rm $filename

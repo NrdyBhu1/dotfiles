@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+cd $HOME/Programming/thirdparty/yt-local
+python $HOME/Programming/thirdparty/yt-local/server.py &

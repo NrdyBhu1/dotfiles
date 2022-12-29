@@ -1,0 +1,20 @@
+#!/usr/bin/env python3
+
+import string
+from sys import argv
+from random import choice
+
+vowels = [ 'a', 'e', 'i', 'o', 'u' ]
+consonents = [ i for i in string.ascii_lowercase if i not in vowels ]
+
+n = 3
+if len(argv) > 1:
+    if argv[1].isdigit():
+        n = int(argv[1])
+
+res = ''
+for i in range(n):
+    res += choice(consonents)
+    res += choice(vowels)
+
+print(res)

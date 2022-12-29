@@ -1,0 +1,23 @@
+#!/usr/bin/env python
+# coding: utf-8
+import sys
+import string
+import random
+
+VOWELS = [ 'a', 'e', 'i', 'o', 'u' ]
+CONSONENTS = [ i for i in string.ascii_lowercase if i not in VOWELS ]
+
+try:
+    if sys.argv[1].isdigit():
+        for i in range(int(sys.argv[1])):
+            if not i % 2:
+                print(random.choice(VOWELS), end='')
+            else:
+                print(random.choice(CONSONENTS), end='')
+        print()
+    else:
+        print("Provide a proper number!")
+except IndexError:
+    print(sys.argv[0], "[NUMBER]")
+
+# vim ft=python3
